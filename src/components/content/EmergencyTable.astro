@@ -1,0 +1,79 @@
+---
+import contact from '../../data/contact.json';
+---
+
+<div class="bg-red-50 border-2 border-red-200 rounded-lg p-6 my-6">
+  <h2 class="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+    </svg>
+    Spoedgevallen & Belangrijke nummers
+  </h2>
+
+  <div class="table-responsive">
+    <table class="emergency-table">
+      <thead>
+        <tr>
+          <th scope="col">Situatie</th>
+          <th scope="col">Telefoonnummer</th>
+          <th scope="col">Wanneer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-red-100">
+          <td class="font-semibold text-red-800">Levensbedreigende situaties</td>
+          <td>
+            <a href="tel:112" class="text-red-700 font-bold text-xl hover:underline">
+              112
+            </a>
+          </td>
+          <td>Direct bellen bij levensgevaar</td>
+        </tr>
+        <tr>
+          <td class="font-semibold">Huisartsenpost DokNoord</td>
+          <td>
+            <a href="tel:0883301330" class="text-primary-600 font-medium hover:underline">
+              {contact.emergency.doknoord}
+            </a>
+          </td>
+          <td>Na 17:00 uur, weekenden en feestdagen</td>
+        </tr>
+        <tr>
+          <td class="font-semibold">Huisartsenpraktijk</td>
+          <td>
+            <a href={`tel:${contact.phone.replace('-', '')}`} class="text-primary-600 font-medium hover:underline">
+              {contact.phone}
+            </a>
+          </td>
+          <td>
+            <ul class="text-sm space-y-1">
+              <li><strong>Optie 1:</strong> Spoed</li>
+              <li><strong>Optie 2:</strong> Afspraak</li>
+              <li><strong>Optie 3:</strong> Herhaalrecept</li>
+              <li><strong>Optie 4:</strong> Uitslagen</li>
+              <li><strong>Optie 5:</strong> Overig</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="font-semibold">Service Apotheek Blijham</td>
+          <td>
+            <a href="tel:0599792005" class="text-primary-600 font-medium hover:underline">
+              {contact.emergency.pharmacy}
+            </a>
+          </td>
+          <td>Voor medicijnen en recepten</td>
+        </tr>
+        <tr>
+          <td class="font-semibold">E-mail</td>
+          <td>
+            <a href={`mailto:${contact.email}`} class="text-primary-600 font-medium hover:underline break-all">
+              {contact.email}
+            </a>
+          </td>
+          <td>Niet voor spoedvragen</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
