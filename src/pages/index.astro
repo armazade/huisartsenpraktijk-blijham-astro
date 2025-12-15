@@ -8,14 +8,14 @@ import contact from '../data/contact.json';
 
 <Layout title="Welkom" description="Huisartsenpraktijk Blijham - Uw huisarts in Blijham. Maak een afspraak of vraag een herhaalrecept aan." fullWidth={true}>
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="bg-[var(--color-bg-soft)] py-16 md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-        <div class="hero-content">
-          <h1 class="hero-title text-balance">
-            Welkom bij {contact.name}
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-[var(--color-navy)] mb-6 leading-tight">
+            Welkom bij<br />
+            <span class="text-[var(--color-purple)]">{contact.name}</span>
           </h1>
- 
           <div class="flex flex-wrap gap-4">
             <Button href="/afspraak-maken" size="lg">
               Afspraak maken
@@ -25,50 +25,58 @@ import contact from '../data/contact.json';
             </Button>
           </div>
         </div>
-
-        <!-- Hero visual / quick info -->
         <div class="hidden lg:block">
-          <div class="card card-shadow p-8">
-            <h2 class="text-xl font-bold text-[var(--color-navy)] mb-6 flex items-center gap-3">
-              <span class="icon-wrapper-purple">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                </svg>
-              </span>
-              Contact opnemen
-            </h2>
-            <div class="space-y-4">
-              <a
-                href={`tel:${contact.phone.replace('-', '')}`}
-                class="flex items-center gap-4 p-4 rounded-xl bg-[var(--color-bg-soft)] hover:bg-[var(--color-purple-light)] transition-colors group"
-              >
-                <span class="text-2xl font-bold text-[var(--color-purple)] group-hover:text-[var(--color-purple-hover)]">
-                  {contact.phone}
-                </span>
-                <span class="text-[var(--color-navy-light)] text-sm">Praktijklijn</span>
-              </a>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="p-4 rounded-xl bg-[var(--color-bg-soft)]">
-                  <p class="text-sm text-[var(--color-navy-light)] mb-1">Afspraken</p>
-                  <p class="font-semibold text-[var(--color-navy)]">{contact.hours.appointments}</p>
+          <div class="relative">
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-[var(--color-purple-light)] rounded-xl flex items-center justify-center">
+                  <svg class="w-7 h-7 text-[var(--color-purple)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
                 </div>
-                <div class="p-4 rounded-xl bg-[var(--color-bg-soft)]">
-                  <p class="text-sm text-[var(--color-navy-light)] mb-1">Medicijnen</p>
-                  <p class="font-semibold text-[var(--color-navy)]">{contact.hours.pharmacyPickup}</p>
+                <div>
+                  <p class="font-semibold text-[var(--color-navy)]">Openingstijden</p>
+                  <p class="text-sm text-[var(--color-navy-light)] font-light">Ma t/m Vr: 08:00 - 17:00</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-[var(--color-blue-light)] rounded-xl flex items-center justify-center">
+                  <svg class="w-7 h-7 text-[var(--color-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-[var(--color-navy)]">Bel ons</p>
+                  <a href={`tel:${contact.phone.replace('-', '')}`} class="text-[var(--color-blue)] hover:text-[var(--color-purple)] transition-colors font-medium">
+                    {contact.phone}
+                  </a>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 bg-[var(--color-sage-light)] rounded-xl flex items-center justify-center">
+                  <svg class="w-7 h-7 text-[var(--color-sage)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-[var(--color-navy)]">Adres</p>
+                  <p class="text-sm text-[var(--color-navy-light)] font-light">{contact.address.street}, {contact.address.city}</p>
                 </div>
               </div>
             </div>
+            <!-- Decorative elements -->
+            <div class="absolute -top-4 -right-4 w-24 h-24 bg-[var(--color-purple-light)] rounded-full opacity-60 -z-10"></div>
+            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-[var(--color-blue-light)] rounded-full opacity-60 -z-10"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Main content with sidebar -->
+  <!-- Main content -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="lg:grid lg:grid-cols-12 lg:gap-12">
-      <!-- Main content -->
-      <div class="lg:col-span-8 space-y-12">
+    <div class="space-y-12">
         <!-- Quick Actions -->
         <section>
           <h2 class="text-2xl font-bold text-[var(--color-navy)] mb-6">Snel naar</h2>
@@ -208,10 +216,8 @@ import contact from '../data/contact.json';
           </Card>
         </section>
       </div>
-
-      <!-- Sidebar -->
+<!-- 
       <aside class="lg:col-span-4 mt-12 lg:mt-0">
-        <!-- Mobile contact info -->
         <div class="lg:hidden mb-8">
           <Card shadow>
             <h3 class="font-bold text-[var(--color-navy)] mb-4">Contact</h3>
@@ -232,9 +238,7 @@ import contact from '../data/contact.json';
           </Card>
         </div>
 
-        <!-- Sidebar content -->
         <div class="space-y-6 sticky top-32">
-          <!-- Ik geef toestemming -->
           <Card variant="sage">
             <div class="flex items-start gap-3 mb-4">
               <div class="icon-wrapper-sage shrink-0">
@@ -262,7 +266,6 @@ import contact from '../data/contact.json';
             </a>
           </Card>
 
-          <!-- Uw Zorg Online -->
           <Card variant="blue">
             <div class="flex items-start gap-3 mb-4">
               <div class="icon-wrapper-blue shrink-0">
@@ -290,7 +293,6 @@ import contact from '../data/contact.json';
             </a>
           </Card>
 
-          <!-- News link -->
           <Card shadow>
             <h3 class="font-bold text-[var(--color-navy)] mb-4 flex items-center gap-2">
               <svg class="w-5 h-5 text-[var(--color-purple)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -311,7 +313,7 @@ import contact from '../data/contact.json';
             </a>
           </Card>
         </div>
-      </aside>
+      </aside> -->
     </div>
   </div>
 </Layout>
