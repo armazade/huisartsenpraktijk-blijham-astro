@@ -15,7 +15,6 @@
         {"label": "Klachtenregeling", "href": "/klachtenregeling"}
       ]
     },
-    {"label": "Afspraak maken", "href": "/afspraak-maken"},
     {
       "label": "Gezondheidsinformatie",
       "href": "/nieuws",
@@ -23,8 +22,11 @@
         {"label": "Thuisarts nieuws", "href": "/thuisarts-nieuws"},
         {"label": "Geneesmiddelen mee op reis", "href": "/geneesmiddelen-mee-op-reis"}
       ]
-    },
-    {"label": "Herhaalreceptenformulier", "href": "/herhaalrecepten"}
+    }
+  ],
+  "cta": [
+    {"label": "Afspraak maken", "href": "/afspraak-maken"},
+    {"label": "Herhaalrecepten", "href": "/herhaalrecepten"}
   ],
   "footer": [
     {"label": "Privacy", "href": "/privacy"},
