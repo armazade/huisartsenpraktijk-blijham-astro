@@ -1,0 +1,141 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<Layout title="Klachtenregeling" description="Klachtenregeling van Huisartsenpraktijk Blijham. Hoe u een klacht kunt indienen en wat er mee gebeurt.">
+  <Breadcrumbs items={[{ label: 'Praktijkinformatie', href: '/team' }, { label: 'Klachtenregeling' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Klachtenregeling</h1>
+
+  <div class="prose prose-lg max-w-none">
+    <p class="text-lg text-gray-700 mb-6">
+      Wij streven ernaar om u de best mogelijke zorg te bieden. Toch kan het voorkomen
+      dat u niet tevreden bent over de zorg of dienstverlening. Wij nemen uw klacht serieus
+      en willen graag van u horen hoe wij het beter kunnen doen.
+    </p>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Stap 1: Bespreek het met ons</h2>
+      <p class="text-gray-700 mb-4">
+        Wij adviseren u om uw onvrede eerst met ons te bespreken. Vaak kan een gesprek
+        al veel verduidelijken en tot een oplossing leiden. U kunt een afspraak maken
+        met de betreffende zorgverlener of met de praktijkmanager.
+      </p>
+      <p class="text-gray-700">
+        Wij zullen uw klacht zorgvuldig behandelen en samen met u naar een oplossing zoeken.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Stap 2: Klachtenfunctionaris</h2>
+      <p class="text-gray-700 mb-4">
+        Komt u er met ons niet uit, of wilt u liever met een onafhankelijke persoon
+        spreken? Dan kunt u contact opnemen met de klachtenfunctionaris van de
+        Stichting Klachten en Geschillen Eerstelijnszorg (SKGE).
+      </p>
+      <p class="text-gray-700 mb-4">
+        De klachtenfunctionaris is onafhankelijk en kan u helpen bij het formuleren
+        en indienen van uw klacht. Dit is gratis.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <Button href="https://www.skge.nl" variant="primary" external>
+          Naar SKGE
+        </Button>
+      </div>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Stap 3: Geschillencommissie</h2>
+      <p class="text-gray-700 mb-4">
+        Als u er ook met hulp van de klachtenfunctionaris niet uitkomt, kunt u uw
+        geschil voorleggen aan de Geschillencommissie Huisartsenzorg.
+      </p>
+      <p class="text-gray-700 mb-4">
+        De geschillencommissie doet een bindende uitspraak. Aan deze procedure zijn
+        kosten verbonden.
+      </p>
+      <Button href="https://www.degeschillencommissiezorg.nl" variant="outline" external>
+        Geschillencommissie Zorg
+      </Button>
+    </Card>
+
+    <Card variant="primary" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Uw rechten</h2>
+      <p class="text-gray-700 mb-4">
+        Als patiënt heeft u rechten die zijn vastgelegd in de Wet op de geneeskundige
+        behandelingsovereenkomst (WGBO) en de Wet kwaliteit, klachten en geschillen
+        zorg (Wkkgz). Deze wetten waarborgen onder andere:
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Recht op informatie over uw behandeling</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Recht op inzage in uw medisch dossier</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Recht op een second opinion</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Recht op privacy en geheimhouding</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Recht op een klachtenprocedure</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card variant="accent" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Meer informatie</h2>
+      <p class="text-gray-700 mb-4">
+        Meer informatie over patiëntenrechten vindt u bij:
+      </p>
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary-600 hover:underline inline-flex items-center gap-1"
+          >
+            Rijksoverheid - Rechten van de patiënt
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.patientenfederatie.nl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary-600 hover:underline inline-flex items-center gap-1"
+          >
+            Patiëntenfederatie Nederland
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </Card>
+  </div>
+</Layout>

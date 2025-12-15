@@ -1,0 +1,88 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import StaffCard from '../components/content/StaffCard.astro';
+import staff from '../data/staff.json';
+
+type StaffMember = {
+  name: string;
+  role: string;
+  days: string | null;
+  gender: 'male' | 'female' | 'unknown';
+};
+---
+
+<Layout title="Medewerkers" description="Ontmoet het team van Huisartsenpraktijk Blijham. Onze huisartsen, doktersassistentes en praktijkondersteuners staan voor u klaar.">
+  <Breadcrumbs items={[{ label: 'Praktijkinformatie', href: '/team' }, { label: 'Medewerkers' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Ons team</h1>
+
+  <p class="text-lg text-gray-700 mb-8">
+    Bij Huisartsenpraktijk Blijham werkt een toegewijd team van zorgprofessionals.
+    Samen zorgen wij voor de beste zorg voor u en uw gezin.
+  </p>
+
+  <!-- Huisartsen -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Huisartsen</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {(staff as StaffMember[]).filter((member) => member.role === 'Huisarts').map((member) => (
+        <StaffCard
+          name={member.name}
+          role={member.role}
+          days={member.days}
+          gender={member.gender}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Doktersassistentes -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Doktersassistentes</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {(staff as StaffMember[]).filter((member) => member.role === 'Doktersassistente').map((member) => (
+        <StaffCard
+          name={member.name}
+          role={member.role}
+          days={member.days}
+          gender={member.gender}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Praktijkondersteuners -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Praktijkondersteuners</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {(staff as StaffMember[]).filter((member) => member.role.includes('POH')).map((member) => (
+        <StaffCard
+          name={member.name}
+          role={member.role}
+          days={member.days}
+          gender={member.gender}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Overige medewerkers -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Overige medewerkers</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {(staff as StaffMember[]).filter((member) =>
+        !member.role.includes('Huisarts') &&
+        !member.role.includes('Doktersassistente') &&
+        !member.role.includes('POH')
+      ).map((member) => (
+        <StaffCard
+          name={member.name}
+          role={member.role}
+          days={member.days}
+          gender={member.gender}
+        />
+      ))}
+    </div>
+  </section>
+</Layout>

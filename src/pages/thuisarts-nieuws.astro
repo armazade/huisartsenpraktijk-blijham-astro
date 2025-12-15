@@ -1,0 +1,138 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+import NewsCard from '../components/content/NewsCard.astro';
+
+// Build-time RSS fetch from Thuisarts.nl would go here
+// For now, we'll use placeholder data with links to thuisarts.nl
+const thuisartsItems = [
+  {
+    title: 'Griep',
+    date: '2024-10-01',
+    description: 'Griep is een infectie van de luchtwegen door het influenzavirus. Je krijgt plotseling koorts, hoofdpijn, spierpijn en je voelt je ziek.',
+    link: 'https://www.thuisarts.nl/griep'
+  },
+  {
+    title: 'Verkoudheid',
+    date: '2024-09-28',
+    description: 'Een verkoudheid is een ontsteking van het slijmvlies in je neus en keel. Je bent snotterig, niest en hebt soms keelpijn.',
+    link: 'https://www.thuisarts.nl/verkoudheid'
+  },
+  {
+    title: 'Hoesten',
+    date: '2024-09-25',
+    description: 'Hoesten is een natuurlijke reactie van je lichaam om je luchtwegen vrij te maken. Meestal gaat het vanzelf over.',
+    link: 'https://www.thuisarts.nl/hoesten'
+  },
+  {
+    title: 'Keelpijn',
+    date: '2024-09-20',
+    description: 'Keelpijn komt vaak door een virusinfectie. Je keel voelt rauw en pijnlijk, vooral bij slikken.',
+    link: 'https://www.thuisarts.nl/keelpijn'
+  },
+  {
+    title: 'Koorts',
+    date: '2024-09-15',
+    description: 'Koorts betekent dat je lichaamstemperatuur hoger is dan normaal. Het is een reactie van je lichaam op een infectie.',
+    link: 'https://www.thuisarts.nl/koorts'
+  },
+];
+---
+
+<Layout title="Thuisarts nieuws" description="Betrouwbare gezondheidsinformatie van Thuisarts.nl voor patiënten van Huisartsenpraktijk Blijham.">
+  <Breadcrumbs items={[{ label: 'Gezondheidsinformatie', href: '/nieuws' }, { label: 'Thuisarts nieuws' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Thuisarts nieuws</h1>
+
+  <Card variant="primary" class="mb-8">
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0">
+        <svg class="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Over Thuisarts.nl</h2>
+        <p class="text-gray-700">
+          Thuisarts.nl is een website van het Nederlands Huisartsen Genootschap (NHG) met
+          betrouwbare informatie over gezondheid en ziekten. De informatie is gebaseerd
+          op de richtlijnen die huisartsen gebruiken.
+        </p>
+      </div>
+    </div>
+  </Card>
+
+  <h2 class="text-2xl font-bold text-gray-900 mb-4">Actuele onderwerpen</h2>
+
+  <div class="space-y-6 mb-8">
+    {thuisartsItems.map((item) => (
+      <NewsCard
+        title={item.title}
+        date={item.date}
+        description={item.description}
+        link={item.link}
+      />
+    ))}
+  </div>
+
+  <Card class="mb-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Populaire onderwerpen op Thuisarts.nl</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+      <a href="https://www.thuisarts.nl/diabetes" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        Diabetes
+      </a>
+      <a href="https://www.thuisarts.nl/hoge-bloeddruk" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        Hoge bloeddruk
+      </a>
+      <a href="https://www.thuisarts.nl/hoofdpijn" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        Hoofdpijn
+      </a>
+      <a href="https://www.thuisarts.nl/rugpijn" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        Rugpijn
+      </a>
+      <a href="https://www.thuisarts.nl/slaapproblemen" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        Slaapproblemen
+      </a>
+      <a href="https://www.thuisarts.nl/angst" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        Angst
+      </a>
+    </div>
+  </Card>
+
+  <Card variant="accent" class="mb-6">
+    <p class="text-gray-700">
+      <strong>Tip:</strong> Bekijk Thuisarts.nl voordat u de huisarts belt. Vaak vindt u hier
+      al het antwoord op uw vraag en tips over wat u zelf kunt doen.
+    </p>
+    <a
+      href="https://www.thuisarts.nl"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent-dark transition-colors font-medium"
+    >
+      Ga naar Thuisarts.nl
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+      </svg>
+    </a>
+  </Card>
+</Layout>

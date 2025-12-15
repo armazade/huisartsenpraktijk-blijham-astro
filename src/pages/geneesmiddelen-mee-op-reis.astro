@@ -1,0 +1,137 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<Layout title="Geneesmiddelen mee op reis" description="Informatie over het meenemen van medicijnen op reis. Tips en regels voor reizen met medicijnen.">
+  <Breadcrumbs items={[{ label: 'Gezondheidsinformatie', href: '/nieuws' }, { label: 'Geneesmiddelen mee op reis' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Geneesmiddelen mee op reis</h1>
+
+  <p class="text-lg text-gray-700 mb-6">
+    Gaat u op reis en gebruikt u medicijnen? Lees hier wat u moet regelen en
+    waar u op moet letten.
+  </p>
+
+  <Card variant="warning" class="mb-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+      <svg class="w-6 h-6 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+      </svg>
+      Regel dit op tijd!
+    </h2>
+    <p class="text-gray-700">
+      Regel uw reispapieren voor medicijnen minimaal <strong>4 weken voor vertrek</strong>.
+      Sommige documenten hebben een langere aanvraagtijd.
+    </p>
+  </Card>
+
+  <Card class="mb-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Checklist voor uw reis</h2>
+    <ul class="space-y-3 text-gray-700">
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span><strong>Voldoende voorraad:</strong> Neem genoeg medicijnen mee voor de hele reis, plus extra voor noodgevallen</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span><strong>Originele verpakking:</strong> Bewaar medicijnen in de originele verpakking met bijsluiter</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span><strong>Handbagage:</strong> Neem medicijnen mee in uw handbagage, niet in ingecheckte bagage</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span><strong>Medicatiepaspoort:</strong> Vraag een actueel medicatiepaspoort aan bij uw apotheek</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span><strong>Koeling:</strong> Controleer of uw medicijnen gekoeld moeten worden</span>
+      </li>
+    </ul>
+  </Card>
+
+  <Card variant="primary" class="mb-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Medicatiepaspoort</h2>
+    <p class="text-gray-700 mb-4">
+      Een medicatiepaspoort is een overzicht van al uw medicijnen in het Engels.
+      Dit kan handig zijn als u in het buitenland naar een arts of apotheek moet.
+      U kunt een medicatiepaspoort aanvragen bij uw apotheek.
+    </p>
+    <Button href="https://www.apotheek.nl/themas/op-reis#medicatiepaspoort" variant="outline" external>
+      Meer informatie op apotheek.nl
+    </Button>
+  </Card>
+
+  <Card class="mb-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Bijzondere medicijnen (Schengenverklaring)</h2>
+    <p class="text-gray-700 mb-4">
+      Voor sommige medicijnen heeft u een Schengenverklaring nodig. Dit geldt voor
+      medicijnen die onder de Opiumwet vallen, zoals:
+    </p>
+    <ul class="space-y-2 text-gray-700 mb-4">
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-warning flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg>
+        <span>Sterke pijnstillers (opiaten)</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-warning flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg>
+        <span>ADHD-medicatie (methylfenidaat)</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-warning flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg>
+        <span>Bepaalde slaap- en kalmeringsmiddelen</span>
+      </li>
+    </ul>
+    <p class="text-gray-700 mb-4">
+      De Schengenverklaring kunt u aanvragen bij het CIBG. Het duurt enkele weken
+      voordat u deze ontvangt.
+    </p>
+    <Button href="https://www.cibg.nl/schengenverklaring" variant="primary" external>
+      Schengenverklaring aanvragen
+    </Button>
+  </Card>
+
+  <Card class="mb-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Reizen buiten Europa</h2>
+    <p class="text-gray-700 mb-4">
+      Reist u buiten Europa? Informeer dan bij de ambassade of het consulaat
+      van uw bestemming welke regels er gelden voor het meenemen van medicijnen.
+      In sommige landen gelden strikte regels.
+    </p>
+    <Button href="https://www.rijksoverheid.nl/onderwerpen/medicijnen/vraag-en-antwoord/medicijnen-meenemen-naar-het-buitenland" variant="outline" external>
+      Informatie van de Rijksoverheid
+    </Button>
+  </Card>
+
+  <Card variant="accent" class="mb-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Hulp nodig?</h2>
+    <p class="text-gray-700 mb-4">
+      Heeft u vragen over uw medicijnen op reis? Neem contact op met:
+    </p>
+    <ul class="space-y-2 text-gray-700">
+      <li><strong>Uw apotheek:</strong> voor het medicatiepaspoort en vragen over bewaring</li>
+      <li><strong>De huisartsenpraktijk:</strong> voor een Schengenverklaring of extra recepten</li>
+      <li><strong>GGD/reizigersvaccinatie:</strong> voor reisvaccinaties en -adviezen</li>
+    </ul>
+  </Card>
+</Layout>

@@ -1,0 +1,108 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+---
+
+<Layout title="Praktijkondersteuner Somatiek" description="Informatie over de praktijkondersteuner somatiek (POH-S) bij Huisartsenpraktijk Blijham.">
+  <Breadcrumbs items={[{ label: 'Praktijkinformatie', href: '/team' }, { label: 'POH Somatiek' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Praktijkondersteuner Huisarts Somatiek (POH-S)</h1>
+
+  <div class="prose prose-lg max-w-none">
+    <p class="text-lg text-gray-700 mb-6">
+      De Praktijkondersteuner Huisarts Somatiek (POH-S) is gespecialiseerd in de begeleiding
+      van patiënten met chronische aandoeningen. De POH-S werkt nauw samen met de huisarts
+      om u de beste zorg te bieden.
+    </p>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Chronische aandoeningen</h2>
+      <p class="text-gray-700 mb-4">
+        De POH-S begeleidt patiënten met onder andere:
+      </p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Diabetes mellitus (suikerziekte)</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>COPD (chronische longziekte)</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Astma</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Hart- en vaatziekten</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Hoge bloeddruk</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Nierfunctiestoornissen</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card variant="primary" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Wat doet de POH-S?</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span><strong>Periodieke controles:</strong> Regelmatige controles om uw gezondheid te monitoren</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span><strong>Leefstijladvies:</strong> Begeleiding bij gezonde voeding, beweging en stoppen met roken</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span><strong>Medicatiebewaking:</strong> Controle van uw medicijngebruik en eventuele bijwerkingen</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span><strong>Voorlichting:</strong> Uitleg over uw aandoening en hoe u hiermee om kunt gaan</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span><strong>Ondersteuning:</strong> Hulp bij het leren omgaan met uw chronische aandoening</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Afspraak maken</h2>
+      <p class="text-gray-700">
+        De POH-S is op maandag en donderdag aanwezig in de praktijk. U kunt een afspraak
+        maken via de doktersassistente.
+      </p>
+    </Card>
+  </div>
+</Layout>

@@ -1,0 +1,140 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+---
+
+<Layout title="Praktijkondersteuner GGZ" description="Informatie over de praktijkondersteuner GGZ (POH-GGZ) bij Huisartsenpraktijk Blijham voor psychische hulpvragen.">
+  <Breadcrumbs items={[{ label: 'Praktijkinformatie', href: '/team' }, { label: 'POH GGZ' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Praktijkondersteuner Huisarts GGZ (POH-GGZ)</h1>
+
+  <div class="prose prose-lg max-w-none">
+    <p class="text-lg text-gray-700 mb-6">
+      De Praktijkondersteuner Huisarts GGZ (POH-GGZ) is gespecialiseerd in psychische en
+      geestelijke gezondheidszorg. U kunt bij de POH-GGZ terecht voor ondersteuning bij
+      psychische klachten en problemen.
+    </p>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Waarvoor kunt u terecht?</h2>
+      <p class="text-gray-700 mb-4">
+        U kunt bij de POH-GGZ terecht voor onder andere:
+      </p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Depressieve klachten</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Angstklachten</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Spanningsklachten en stress</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Burn-out</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Slaapproblemen</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Rouwverwerking</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Relatieproblemen</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Levensfaseproblemen</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card variant="primary" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Wat biedt de POH-GGZ?</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span><strong>Gesprekken:</strong> Korte behandeltrajecten met gesprekken om uw klachten te verminderen</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span><strong>E-health:</strong> Online modules die u thuis kunt doorlopen</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span><strong>Verwijzing:</strong> Indien nodig verwijzing naar gespecialiseerde hulpverlening</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span><strong>Ondersteuning:</strong> Praktische tips en adviezen om beter met uw klachten om te gaan</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Afspraak maken</h2>
+      <p class="text-gray-700 mb-4">
+        De POH-GGZ is op dinsdag aanwezig in de praktijk. U kunt een afspraak maken
+        via de huisarts of de doktersassistente. De huisarts bepaalt in overleg met u
+        of een afspraak bij de POH-GGZ geschikt is.
+      </p>
+      <p class="text-gray-700">
+        <strong>Vertrouwelijkheid:</strong> Alles wat u met de POH-GGZ bespreekt, valt
+        onder het medisch beroepsgeheim en wordt vertrouwelijk behandeld.
+      </p>
+    </Card>
+
+    <Card variant="accent" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Direct hulp nodig?</h2>
+      <p class="text-gray-700 mb-4">
+        Heeft u acute psychische nood of gedachten aan zelfdoding? Neem dan contact op met:
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li>
+          <strong>113 Zelfmoordpreventie:</strong>
+          <a href="tel:113" class="text-primary-600 hover:underline">113</a> (24/7 bereikbaar)
+        </li>
+        <li>
+          <strong>Huisartsenpost DokNoord:</strong>
+          <a href="tel:0883301330" class="text-primary-600 hover:underline">088-3301330</a>
+        </li>
+        <li>
+          <strong>Spoedeisende hulp:</strong>
+          <a href="tel:112" class="text-danger hover:underline font-bold">112</a>
+        </li>
+      </ul>
+    </Card>
+  </div>
+</Layout>

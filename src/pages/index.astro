@@ -1,16 +1,136 @@
 ---
-
+import Layout from '../components/layout/Layout.astro';
+import EmergencyTable from '../components/content/EmergencyTable.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import contact from '../data/contact.json';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Welkom" description="Huisartsenpraktijk Blijham - Uw huisarts in Blijham. Maak een afspraak of vraag een herhaalrecept aan.">
+  <!-- Welcome Section -->
+  <section class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">
+      Welkom bij {contact.name}
+    </h1>
+    <p class="text-lg text-gray-700 mb-6">
+      Wij zijn een huisartsenpraktijk in Blijham en bieden zorg aan alle inwoners in de regio.
+      U kunt bij ons terecht voor algemene medische zorg, chronische aandoeningen, geestelijke
+      gezondheidszorg en preventieve zorg.
+    </p>
+  </section>
+
+  <!-- Emergency Numbers -->
+  <EmergencyTable />
+
+  <!-- Quick Links -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Snel naar</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <Card variant="primary" hover>
+        <div class="text-center">
+          <svg class="w-10 h-10 mx-auto mb-3 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <h3 class="font-semibold text-gray-900 mb-2">Afspraak maken</h3>
+          <p class="text-sm text-gray-600 mb-4">Maak een afspraak bij de huisarts</p>
+          <Button href="/afspraak-maken" size="sm">Meer informatie</Button>
+        </div>
+      </Card>
+
+      <Card variant="accent" hover>
+        <div class="text-center">
+          <svg class="w-10 h-10 mx-auto mb-3 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <h3 class="font-semibold text-gray-900 mb-2">Herhaalrecepten</h3>
+          <p class="text-sm text-gray-600 mb-4">Vraag uw medicijnen online aan</p>
+          <Button href="/herhaalrecepten" variant="accent" size="sm">Aanvragen</Button>
+        </div>
+      </Card>
+
+      <Card hover>
+        <div class="text-center">
+          <svg class="w-10 h-10 mx-auto mb-3 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <h3 class="font-semibold text-gray-900 mb-2">Route</h3>
+          <p class="text-sm text-gray-600 mb-4">Bekijk hoe u bij ons komt</p>
+          <Button href="/routebeschrijving" variant="outline" size="sm">Routebeschrijving</Button>
+        </div>
+      </Card>
+    </div>
+  </section>
+
+  <!-- Important Announcements -->
+  <section class="mb-8">
+    <Card variant="warning">
+      <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+        <svg class="w-6 h-6 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Belangrijke mededelingen
+      </h2>
+      <div class="space-y-3 text-gray-700">
+        <p>
+          <strong>Pauzetijden:</strong> Tussen {contact.hours.break} zijn wij gesloten voor pauze.
+          U kunt dan geen telefonisch contact met ons opnemen.
+        </p>
+        <p>
+          <strong>Medicijnen ophalen:</strong> U kunt uw medicijnen ophalen bij de uitdeelpost
+          tussen {contact.hours.pharmacyPickup}.
+        </p>
+      </div>
+    </Card>
+  </section>
+
+  <!-- LSP/VZVZ Information -->
+  <section class="mb-8">
+    <Card>
+      <h2 class="text-xl font-bold text-gray-900 mb-3">
+        Delen van medische gegevens (LSP)
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Het Landelijk Schakelpunt (LSP) is een elektronisch netwerk waarmee zorgverleners
+        veilig medische gegevens kunnen uitwisselen. Dit kan belangrijk zijn wanneer u
+        bijvoorbeeld buiten kantoortijden zorg nodig heeft van een arts die u niet kent.
+      </p>
+      <p class="text-gray-700 mb-4">
+        U bepaalt zelf of u wilt dat uw gegevens via het LSP beschikbaar zijn voor andere
+        zorgverleners. Geef uw toestemming via:
+      </p>
+      <Button href="https://www.volgjezorg.nl" variant="outline" external>
+        Volg je Zorg
+      </Button>
+    </Card>
+  </section>
+
+  <!-- Service Apotheek App -->
+  <section class="mb-8">
+    <Card variant="primary">
+      <h2 class="text-xl font-bold text-gray-900 mb-3">
+        Medicijnen bestellen via de Service Apotheek App
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Bent u patiënt bij Service Apotheek Blijham? Dan kunt u eenvoudig uw herhaalrecepten
+        bestellen via de Service Apotheek App. Download de app in de App Store of Google Play Store.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <Button
+          href="https://apps.apple.com/nl/app/service-apotheek/id1041054514"
+          variant="secondary"
+          external
+        >
+          App Store
+        </Button>
+        <Button
+          href="https://play.google.com/store/apps/details?id=nl.mijnserviceapotheek.app"
+          variant="secondary"
+          external
+        >
+          Google Play
+        </Button>
+      </div>
+    </Card>
+  </section>
+</Layout>

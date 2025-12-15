@@ -1,0 +1,90 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+import contact from '../data/contact.json';
+---
+
+<Layout title="Afwezigheid en vakanties" description="Informatie over afwezigheid, vakanties en waarneming bij Huisartsenpraktijk Blijham.">
+  <Breadcrumbs items={[{ label: 'Praktijkinformatie', href: '/team' }, { label: 'Afwezigheid en vakanties' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Afwezigheid en vakanties</h1>
+
+  <div class="prose prose-lg max-w-none">
+    <p class="text-lg text-gray-700 mb-6">
+      Op deze pagina vindt u informatie over de afwezigheid van onze huisartsen
+      en de waarnemingsregeling.
+    </p>
+
+    <Card variant="primary" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Huidige afwezigheid</h2>
+      <p class="text-gray-700">
+        Op dit moment zijn er geen geplande afwezigheden of vakanties.
+        Raadpleeg deze pagina regelmatig voor actuele informatie.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Waarnemingsregeling</h2>
+      <p class="text-gray-700 mb-4">
+        Tijdens afwezigheid van onze huisartsen wordt de praktijk waargenomen door een
+        collega-huisarts. U kunt gewoon bellen naar ons praktijknummer en u wordt
+        doorverbonden of geïnformeerd over de waarneming.
+      </p>
+      <div class="bg-gray-50 rounded-lg p-4">
+        <p class="font-medium text-gray-900 mb-2">Praktijknummer:</p>
+        <a href={`tel:${contact.phone.replace('-', '')}`} class="text-primary-600 hover:underline font-medium text-lg">
+          {contact.phone}
+        </a>
+      </div>
+    </Card>
+
+    <Card variant="accent" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Buiten kantoortijden</h2>
+      <p class="text-gray-700 mb-4">
+        Buiten kantoortijden (na 17:00 uur, in het weekend en op feestdagen) kunt u
+        terecht bij de huisartsenpost DokNoord.
+      </p>
+      <div class="bg-white rounded-lg p-4 border border-accent/30">
+        <p class="font-medium text-gray-900 mb-2">Huisartsenpost DokNoord:</p>
+        <a href="tel:0883301330" class="text-primary-600 hover:underline font-medium text-lg">
+          {contact.emergency.doknoord}
+        </a>
+        <p class="text-sm text-gray-600 mt-2">
+          Bereikbaar op werkdagen vanaf 17:00 uur en in het weekend
+        </p>
+      </div>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Pauzetijden</h2>
+      <p class="text-gray-700 mb-4">
+        Tijdens de pauzetijden is de praktijk telefonisch niet bereikbaar:
+      </p>
+      <div class="bg-gray-50 rounded-lg p-4">
+        <p class="text-gray-700">
+          <strong>Pauzetijden:</strong> {contact.hours.break}
+        </p>
+      </div>
+      <p class="text-gray-700 mt-4">
+        Bij spoed tijdens de pauze kunt u een bericht inspreken. Wij bellen u zo spoedig
+        mogelijk terug.
+      </p>
+    </Card>
+
+    <Card variant="warning" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+        <svg class="w-6 h-6 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg>
+        Spoed
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Bij levensbedreigende situaties belt u altijd:
+      </p>
+      <a href="tel:112" class="inline-flex items-center gap-2 px-6 py-3 bg-danger text-white font-bold text-xl rounded-lg hover:bg-red-700 transition-colors">
+        112
+      </a>
+    </Card>
+  </div>
+</Layout>
