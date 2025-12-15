@@ -1,5 +1,6 @@
 ---
 import FormProgress from './FormProgress.astro';
+import { getUrl } from '../../utils/url';
 ---
 
 <div class="w-full">
@@ -433,7 +434,7 @@ import FormProgress from './FormProgress.astro';
           <label class="flex items-start gap-3 cursor-pointer">
             <input type="checkbox" id="privacy-consent" required class="mt-1 w-5 h-5 accent-[var(--color-purple)]" />
             <span class="text-[var(--color-navy)]">
-              Ik heb de <a href="/privacy" target="_blank" class="text-[var(--color-blue)] hover:text-[var(--color-purple)] underline">privacyverklaring</a> gelezen en ga akkoord met de verwerking van mijn gegevens.
+              Ik heb de <a href={getUrl('/privacy')} target="_blank" class="text-[var(--color-blue)] hover:text-[var(--color-purple)] underline">privacyverklaring</a> gelezen en ga akkoord met de verwerking van mijn gegevens.
               <span class="text-[var(--color-danger)]">*</span>
             </span>
           </label>
@@ -466,7 +467,7 @@ import FormProgress from './FormProgress.astro';
       <p class="text-[var(--color-navy-light)] mb-8 max-w-md mx-auto">
         Uw herhaalrecept aanvraag is succesvol verstuurd. U ontvangt een bevestiging per e-mail.
       </p>
-      <a href="/" class="btn btn-primary btn-lg">
+      <a href={getUrl('/')} class="btn btn-primary btn-lg">
         Terug naar home
       </a>
     </div>

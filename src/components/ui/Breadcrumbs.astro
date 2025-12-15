@@ -1,4 +1,6 @@
 ---
+import { getUrl } from '../../utils/url';
+
 interface BreadcrumbItem {
   label: string;
   href?: string;
@@ -14,7 +16,7 @@ const { items } = Astro.props;
 <nav aria-label="Breadcrumb" class="mb-6">
   <ol class="flex flex-wrap items-center gap-2 text-sm">
     <li>
-      <a href="/" class="text-primary-600 hover:underline">
+      <a href={getUrl('/')} class="text-primary-600 hover:underline">
         Home
       </a>
     </li>
@@ -27,7 +29,7 @@ const { items } = Astro.props;
         </li>
         <li>
           {item.href && index < items.length - 1 ? (
-            <a href={item.href} class="text-primary-600 hover:underline">
+            <a href={getUrl(item.href)} class="text-primary-600 hover:underline">
               {item.label}
             </a>
           ) : (

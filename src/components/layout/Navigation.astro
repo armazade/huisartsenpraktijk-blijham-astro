@@ -1,24 +1,31 @@
 ---
 import navigation from '../../data/navigation.json';
 import SearchBar from '../ui/SearchBar.astro';
+import { getUrl } from '../../utils/url';
 
 const currentPath = Astro.url.pathname;
+const basePath = import.meta.env.BASE_URL || '/';
 
 function isActive(href: string, children?: { href: string }[]): boolean {
+  const fullHref = getUrl(href);
   if (href === '/') {
-    return currentPath === '/';
+    return currentPath === basePath || currentPath === basePath.replace(/\/$/, '');
   }
-  if (currentPath === href || currentPath === href + '/') {
+  if (currentPath === fullHref || currentPath === fullHref + '/') {
     return true;
   }
   if (children) {
-    return children.some(child => currentPath === child.href || currentPath === child.href + '/');
+    return children.some(child => {
+      const childHref = getUrl(child.href);
+      return currentPath === childHref || currentPath === childHref + '/';
+    });
   }
   return false;
 }
 
 function isChildActive(href: string): boolean {
-  return currentPath === href || currentPath === href + '/';
+  const fullHref = getUrl(href);
+  return currentPath === fullHref || currentPath === fullHref + '/';
 }
 
 type NavItem = {
@@ -57,7 +64,7 @@ type NavItem = {
                   {item.children.map((child) => (
                     <li role="none">
                       <a
-                        href={child.href}
+                        href={getUrl(child.href)}
                         class:list={[
                           "dropdown-item",
                           { "bg-[var(--color-purple)] text-white": isChildActive(child.href) }
@@ -72,7 +79,7 @@ type NavItem = {
               </>
             ) : (
               <a
-                href={item.href}
+                href={getUrl(item.href)}
                 class:list={[
                   "nav-link",
                   { "bg-[var(--color-purple-light)] text-[var(--color-purple)]": isActive(item.href) }
@@ -153,7 +160,7 @@ type NavItem = {
                   {item.children.map((child) => (
                     <li>
                       <a
-                        href={child.href}
+                        href={getUrl(child.href)}
                         class:list={[
                           "block px-4 py-3 rounded-lg text-[var(--color-navy-light)] hover:bg-[var(--color-bg-soft)] hover:text-[var(--color-navy)] transition-colors",
                           { "bg-[var(--color-purple-light)] text-[var(--color-purple)] font-medium": isChildActive(child.href) }
@@ -167,7 +174,7 @@ type NavItem = {
               </div>
             ) : (
               <a
-                href={item.href}
+                href={getUrl(item.href)}
                 class:list={[
                   "block px-4 py-3 rounded-lg text-[var(--color-navy)] hover:bg-[var(--color-bg-soft)] transition-colors font-medium",
                   { "bg-[var(--color-purple-light)] text-[var(--color-purple)]": isActive(item.href) }
@@ -185,7 +192,7 @@ type NavItem = {
       <div class="mt-6 pt-6 border-t border-[var(--color-navy-lighter)] space-y-3">
         {(navigation.cta as NavItem[]).map((item, index) => (
           <a
-            href={item.href}
+            href={getUrl(item.href)}
             class:list={[
               "block w-full text-center py-3 px-4 rounded-2xl font-semibold transition-all",
               index === 0

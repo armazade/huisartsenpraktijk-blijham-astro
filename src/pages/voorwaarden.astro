@@ -3,6 +3,7 @@ import Layout from '../components/layout/Layout.astro';
 import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
 import Card from '../components/ui/Card.astro';
 import contact from '../data/contact.json';
+import { getUrl } from '../utils/url';
 ---
 
 <Layout title="Algemene voorwaarden" description="Algemene voorwaarden van Huisartsenpraktijk Blijham.">
@@ -112,7 +113,7 @@ import contact from '../data/contact.json';
       <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 7 - Privacy</h2>
       <p class="text-gray-700">
         Wij gaan zorgvuldig om met uw persoonsgegevens. Zie onze
-        <a href="/privacy" class="text-primary-600 hover:underline">privacyverklaring</a>
+        <a href={getUrl('/privacy')} class="text-primary-600 hover:underline">privacyverklaring</a>
         voor meer informatie.
       </p>
     </Card>
@@ -121,7 +122,7 @@ import contact from '../data/contact.json';
       <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 8 - Klachten</h2>
       <p class="text-gray-700">
         Bent u niet tevreden? Lees onze
-        <a href="/klachtenregeling" class="text-primary-600 hover:underline">klachtenregeling</a>
+        <a href={getUrl('/klachtenregeling')} class="text-primary-600 hover:underline">klachtenregeling</a>
         voor meer informatie over hoe u een klacht kunt indienen.
       </p>
     </Card>

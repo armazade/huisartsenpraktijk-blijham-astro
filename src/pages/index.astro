@@ -4,6 +4,7 @@ import EmergencyTable from '../components/content/EmergencyTable.astro';
 import Button from '../components/ui/Button.astro';
 import Card from '../components/ui/Card.astro';
 import contact from '../data/contact.json';
+import { getUrl } from '../utils/url';
 ---
 
 <Layout title="Welkom" description="Huisartsenpraktijk Blijham - Uw huisarts in Blijham. Maak een afspraak of vraag een herhaalrecept aan." fullWidth={true}>
@@ -81,7 +82,7 @@ import contact from '../data/contact.json';
         <section>
           <h2 class="text-2xl font-bold text-[var(--color-navy)] mb-6">Snel naar</h2>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <a href="/afspraak-maken" class="card card-hover card-shadow group">
+            <a href={getUrl('/afspraak-maken')} class="card card-hover card-shadow group">
               <div class="text-center">
                 <div class="icon-wrapper-purple mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +94,7 @@ import contact from '../data/contact.json';
               </div>
             </a>
 
-            <a href="/herhaalrecepten" class="card card-hover card-shadow group">
+            <a href={getUrl('/herhaalrecepten')} class="card card-hover card-shadow group">
               <div class="text-center">
                 <div class="icon-wrapper-sage mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +106,7 @@ import contact from '../data/contact.json';
               </div>
             </a>
 
-            <a href="/routebeschrijving" class="card card-hover card-shadow group">
+            <a href={getUrl('/routebeschrijving')} class="card card-hover card-shadow group">
               <div class="text-center">
                 <div class="icon-wrapper-blue mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

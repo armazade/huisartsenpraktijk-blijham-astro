@@ -1,6 +1,7 @@
 ---
 import contact from '../../data/contact.json';
 import navigation from '../../data/navigation.json';
+import { getUrl } from '../../utils/url';
 ---
 
 <footer class="bg-[var(--color-navy)] text-white mt-auto no-print">
@@ -56,22 +57,22 @@ import navigation from '../../data/navigation.json';
         <h3 class="font-bold text-base mb-5">Snelkoppelingen</h3>
         <ul class="space-y-3 text-white/70 font-light">
           <li>
-            <a href="/herhaalrecepten" class="hover:text-white transition-colors">
+            <a href={getUrl('/herhaalrecepten')} class="hover:text-white transition-colors">
               Herhaalrecepten aanvragen
             </a>
           </li>
           <li>
-            <a href="/afspraak-maken" class="hover:text-white transition-colors">
+            <a href={getUrl('/afspraak-maken')} class="hover:text-white transition-colors">
               Afspraak maken
             </a>
           </li>
           <li>
-            <a href="/routebeschrijving" class="hover:text-white transition-colors">
+            <a href={getUrl('/routebeschrijving')} class="hover:text-white transition-colors">
               Routebeschrijving
             </a>
           </li>
           <li>
-            <a href="/team" class="hover:text-white transition-colors">
+            <a href={getUrl('/team')} class="hover:text-white transition-colors">
               Ons team
             </a>
           </li>
@@ -121,13 +122,13 @@ import navigation from '../../data/navigation.json';
           <ul class="flex items-center gap-6 text-sm">
             {navigation.footer.map((item: { href: string; label: string }) => (
               <li>
-                <a href={item.href} class="text-white/70 hover:text-white transition-colors font-light">
+                <a href={getUrl(item.href)} class="text-white/70 hover:text-white transition-colors font-light">
                   {item.label}
                 </a>
               </li>
             ))}
             <li>
-              <a href="/klachtenregeling" class="text-white/70 hover:text-white transition-colors font-light">
+              <a href={getUrl('/klachtenregeling')} class="text-white/70 hover:text-white transition-colors font-light">
                 Klachtenregeling
               </a>
             </li>
