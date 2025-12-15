@@ -10,12 +10,14 @@ interface Props {
   title: string;
   description?: string;
   showSidebar?: boolean;
+  fullWidth?: boolean;
 }
 
 const {
   title,
   description = 'Huisartsenpraktijk Blijham - Uw huisarts in Blijham',
-  showSidebar = true
+  showSidebar = true,
+  fullWidth = false
 } = Astro.props;
 ---
 
@@ -27,7 +29,11 @@ const {
     <meta name="description" content={description} />
     <title>{title} | Huisartsenpraktijk Blijham</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Google Fonts - DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
 
     <!-- Plausible Analytics -->
     <script defer data-domain="huisartsenpraktijkblijham.nl" src="https://plausible.io/js/script.js"></script>
@@ -48,26 +54,30 @@ const {
       })();
     </script>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col bg-white">
     <SkipToContent />
 
     <Header />
 
     <main id="main-content" class="flex-1">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {showSidebar ? (
-          <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-            <div class="lg:col-span-8">
-              <slot />
+      {fullWidth ? (
+        <slot />
+      ) : (
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {showSidebar ? (
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+              <div class="lg:col-span-8">
+                <slot />
+              </div>
+              <aside class="lg:col-span-4 mt-12 lg:mt-0">
+                <Sidebar />
+              </aside>
             </div>
-            <aside class="lg:col-span-4 mt-8 lg:mt-0">
-              <Sidebar />
-            </aside>
-          </div>
-        ) : (
-          <slot />
-        )}
-      </div>
+          ) : (
+            <slot />
+          )}
+        </div>
+      )}
     </main>
 
     <Footer />

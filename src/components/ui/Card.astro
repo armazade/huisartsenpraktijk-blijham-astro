@@ -1,8 +1,9 @@
 ---
 interface Props {
-  variant?: 'default' | 'primary' | 'accent' | 'warning';
-  padding?: 'sm' | 'md' | 'lg';
+  variant?: 'default' | 'soft' | 'purple' | 'blue' | 'sage' | 'orange' | 'warning';
+  padding?: 'none' | 'sm' | 'md' | 'lg';
   hover?: boolean;
+  shadow?: boolean;
   class?: string;
 }
 
@@ -10,25 +11,30 @@ const {
   variant = 'default',
   padding = 'md',
   hover = false,
+  shadow = false,
   class: className = '',
 } = Astro.props;
 
-const baseClasses = 'rounded-lg';
+const baseClasses = 'card';
 
 const variantClasses = {
-  default: 'bg-white border border-gray-200',
-  primary: 'bg-primary-50 border border-primary-200',
-  accent: 'bg-accent/10 border border-accent/30',
-  warning: 'bg-amber-50 border border-amber-200',
+  default: 'bg-white',
+  soft: 'card-soft',
+  purple: 'card-purple',
+  blue: 'card-blue',
+  sage: 'card-sage',
+  orange: 'card-orange',
+  warning: 'bg-[var(--color-warning-light)] border-l-4 border-[var(--color-warning)]',
 };
 
 const paddingClasses = {
+  none: 'p-0',
   sm: 'p-4',
   md: 'p-6',
   lg: 'p-8',
 };
 
-const classes = `${baseClasses} ${variantClasses[variant]} ${paddingClasses[padding]} ${hover ? 'card-hover' : ''} ${className}`;
+const classes = `${baseClasses} ${variantClasses[variant]} ${paddingClasses[padding]} ${hover ? 'card-hover cursor-pointer' : ''} ${shadow ? 'card-shadow' : ''} ${className}`;
 ---
 
 <div class={classes}>

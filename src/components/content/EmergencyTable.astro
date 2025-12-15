@@ -2,78 +2,116 @@
 import contact from '../../data/contact.json';
 ---
 
-<div class="bg-red-50 border-2 border-red-200 rounded-lg p-6 my-6">
-  <h2 class="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-    </svg>
+<div class="card bg-[var(--color-danger-light)] border-l-4 border-[var(--color-danger)]">
+  <h2 class="text-xl font-bold text-[var(--color-navy)] mb-6 flex items-center gap-3">
+    <span class="w-10 h-10 rounded-full bg-[var(--color-danger)] flex items-center justify-center">
+      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+      </svg>
+    </span>
     Spoedgevallen & Belangrijke nummers
   </h2>
 
-  <div class="table-responsive">
-    <table class="emergency-table">
-      <thead>
-        <tr>
-          <th scope="col">Situatie</th>
-          <th scope="col">Telefoonnummer</th>
-          <th scope="col">Wanneer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="bg-red-100">
-          <td class="font-semibold text-red-800">Levensbedreigende situaties</td>
-          <td>
-            <a href="tel:112" class="text-red-700 font-bold text-xl hover:underline">
-              112
-            </a>
-          </td>
-          <td>Direct bellen bij levensgevaar</td>
-        </tr>
-        <tr>
-          <td class="font-semibold">Huisartsenpost DokNoord</td>
-          <td>
-            <a href="tel:0883301330" class="text-primary-600 font-medium hover:underline">
-              {contact.emergency.doknoord}
-            </a>
-          </td>
-          <td>Na 17:00 uur, weekenden en feestdagen</td>
-        </tr>
-        <tr>
-          <td class="font-semibold">Huisartsenpraktijk</td>
-          <td>
-            <a href={`tel:${contact.phone.replace('-', '')}`} class="text-primary-600 font-medium hover:underline">
+  <div class="space-y-4">
+    <!-- 112 - Life threatening -->
+    <div class="bg-[var(--color-danger)] rounded-xl p-4 text-white">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <p class="font-bold text-lg">Levensbedreigende situaties</p>
+          <p class="text-white/80 text-sm font-light">Direct bellen bij levensgevaar</p>
+        </div>
+        <a
+          href="tel:112"
+          class="bg-white text-[var(--color-danger)] font-bold text-2xl px-6 py-2 rounded-xl hover:bg-white/90 transition-colors"
+        >
+          112
+        </a>
+      </div>
+    </div>
+
+    <!-- Other numbers -->
+    <div class="bg-white rounded-xl overflow-hidden">
+      <div class="divide-y divide-[var(--color-navy-lighter)]">
+        <!-- DokNoord -->
+        <div class="p-4 flex items-center justify-between flex-wrap gap-3">
+          <div>
+            <p class="font-semibold text-[var(--color-navy)]">Huisartsenpost DokNoord</p>
+            <p class="text-sm text-[var(--color-navy-light)] font-light">Na 17:00, weekenden en feestdagen</p>
+          </div>
+          <a
+            href="tel:0883301330"
+            class="btn btn-blue btn-sm"
+          >
+            {contact.emergency.doknoord}
+          </a>
+        </div>
+
+        <!-- Practice -->
+        <div class="p-4">
+          <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
+            <div>
+              <p class="font-semibold text-[var(--color-navy)]">Huisartsenpraktijk</p>
+              <p class="text-sm text-[var(--color-navy-light)] font-light">Ma t/m Vr: 08:00 - 17:00</p>
+            </div>
+            <a
+              href={`tel:${contact.phone.replace('-', '')}`}
+              class="btn btn-primary btn-sm"
+            >
               {contact.phone}
             </a>
-          </td>
-          <td>
-            <ul class="text-sm space-y-1">
-              <li><strong>Optie 1:</strong> Spoed</li>
-              <li><strong>Optie 2:</strong> Afspraak</li>
-              <li><strong>Optie 3:</strong> Herhaalrecept</li>
-              <li><strong>Optie 4:</strong> Uitslagen</li>
-              <li><strong>Optie 5:</strong> Overig</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-semibold">Service Apotheek Blijham</td>
-          <td>
-            <a href="tel:0599792005" class="text-primary-600 font-medium hover:underline">
-              {contact.emergency.pharmacy}
-            </a>
-          </td>
-          <td>Voor medicijnen en recepten</td>
-        </tr>
-        <tr>
-          <td class="font-semibold">E-mail</td>
-          <td>
-            <a href={`mailto:${contact.email}`} class="text-primary-600 font-medium hover:underline break-all">
-              {contact.email}
-            </a>
-          </td>
-          <td>Niet voor spoedvragen</td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-4">
+            <div class="text-center p-2 bg-[var(--color-bg-soft)] rounded-lg">
+              <span class="badge badge-purple text-xs mb-1">1</span>
+              <p class="text-xs text-[var(--color-navy-light)]">Spoed</p>
+            </div>
+            <div class="text-center p-2 bg-[var(--color-bg-soft)] rounded-lg">
+              <span class="badge badge-purple text-xs mb-1">2</span>
+              <p class="text-xs text-[var(--color-navy-light)]">Afspraak</p>
+            </div>
+            <div class="text-center p-2 bg-[var(--color-bg-soft)] rounded-lg">
+              <span class="badge badge-purple text-xs mb-1">3</span>
+              <p class="text-xs text-[var(--color-navy-light)]">Recept</p>
+            </div>
+            <div class="text-center p-2 bg-[var(--color-bg-soft)] rounded-lg">
+              <span class="badge badge-purple text-xs mb-1">4</span>
+              <p class="text-xs text-[var(--color-navy-light)]">Uitslagen</p>
+            </div>
+            <div class="text-center p-2 bg-[var(--color-bg-soft)] rounded-lg">
+              <span class="badge badge-purple text-xs mb-1">5</span>
+              <p class="text-xs text-[var(--color-navy-light)]">Overig</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pharmacy -->
+        <div class="p-4 flex items-center justify-between flex-wrap gap-3">
+          <div>
+            <p class="font-semibold text-[var(--color-navy)]">Service Apotheek Blijham</p>
+            <p class="text-sm text-[var(--color-navy-light)] font-light">Voor medicijnen en recepten</p>
+          </div>
+          <a
+            href="tel:0599792005"
+            class="btn btn-secondary btn-sm"
+          >
+            {contact.emergency.pharmacy}
+          </a>
+        </div>
+
+        <!-- Email -->
+        <div class="p-4 flex items-center justify-between flex-wrap gap-3">
+          <div>
+            <p class="font-semibold text-[var(--color-navy)]">E-mail</p>
+            <p class="text-sm text-[var(--color-navy-light)] font-light">Niet voor spoedvragen</p>
+          </div>
+          <a
+            href={`mailto:${contact.email}`}
+            class="btn btn-outline btn-sm"
+          >
+            {contact.email}
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
