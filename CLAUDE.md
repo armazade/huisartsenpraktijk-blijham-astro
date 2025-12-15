@@ -22,6 +22,7 @@ npm run preview  # Preview production build locally
 - **Maps:** Leaflet.js with OpenStreetMap (no API key)
 - **Analytics:** Plausible Analytics
 - **Forms:** Web3Forms for email notifications (requires `WEB3FORMS_ACCESS_KEY` env var)
+- **Deployment:** GitHub Pages at `/huisartsenpraktijk-blijham-astro` base path
 
 ## Architecture
 
@@ -56,6 +57,7 @@ src/
 - Props defined with TypeScript interfaces in frontmatter
 - Phone numbers use `tel:` links
 - External links use `target="_blank" rel="noopener"`
+- **URL Helper:** Use `getUrl('/path')` from `src/utils/url.ts` for all internal links and assets to handle the GitHub Pages base path correctly
 
 ## Design System (Mantelzorg-inspired)
 
@@ -177,3 +179,5 @@ Logic is in `src/scripts/prescription-form.ts`. Form state persists during navig
 .icon-wrapper-purple         /* Icon container */
 .badge .badge-purple         /* Small badge/tag */
 ```
+
+dit heeft ie in een keer gemaakt toen ik het project startte, nu gewoon iets toegevoegd nadat ik changes had :)
