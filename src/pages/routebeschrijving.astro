@@ -9,13 +9,13 @@ import contact from '../data/contact.json';
 <Layout title="Routebeschrijving" description="Route naar Huisartsenpraktijk Blijham. Adres, parkeren en bereikbaarheid.">
   <Breadcrumbs items={[{ label: 'Praktijkinformatie', href: '/team' }, { label: 'Routebeschrijving' }]} />
 
-  <h1 class="text-3xl font-bold text-gray-900 mb-6">Routebeschrijving</h1>
+  <h1 class="text-3xl font-bold text-[var(--color-navy)] mb-6">Routebeschrijving</h1>
 
   <div class="prose prose-lg max-w-none">
     <Card class="mb-6">
-      <h2 class="text-xl font-bold text-gray-900 mb-4">Ons adres</h2>
-      <address class="not-italic text-gray-700">
-        <p class="text-lg font-medium">{contact.name}</p>
+      <h2 class="text-xl font-bold text-[var(--color-navy)] mb-4">Ons adres</h2>
+      <address class="not-italic text-[var(--color-navy-light)]">
+        <p class="text-lg font-medium text-[var(--color-navy)]">{contact.name}</p>
         <p>{contact.address.street}</p>
         <p>{contact.address.postal} {contact.address.city}</p>
       </address>
@@ -24,12 +24,12 @@ import contact from '../data/contact.json';
           href={`https://www.google.com/maps/dir/?api=1&destination=${contact.address.street},${contact.address.city}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium"
+          class="btn btn-primary px-5 py-3"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
           </svg>
-          Route plannen in Google Maps
+          <span class="ml-1">Route plannen in Google Maps</span>
         </a>
       </div>
     </Card>
@@ -40,13 +40,13 @@ import contact from '../data/contact.json';
     </div>
 
     <Card class="mb-6">
-      <h2 class="text-xl font-bold text-gray-900 mb-4">Parkeren</h2>
-      <p class="text-gray-700 mb-4">
+      <h2 class="text-xl font-bold text-[var(--color-navy)] mb-4">Parkeren</h2>
+      <p class="text-[var(--color-navy-light)] mb-4">
         Er is gratis parkeergelegenheid direct voor de praktijk. U kunt ook parkeren
         in de omliggende straten.
       </p>
-      <div class="flex items-start gap-2 text-gray-700">
-        <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="flex items-start gap-2 text-[var(--color-navy-light)]">
+        <svg class="w-5 h-5 text-[var(--color-sage)] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
         </svg>
         <span>Er zijn ook invalidenparkeerplaatsen beschikbaar nabij de ingang.</span>
@@ -54,15 +54,15 @@ import contact from '../data/contact.json';
     </Card>
 
     <Card class="mb-6">
-      <h2 class="text-xl font-bold text-gray-900 mb-4">Met het openbaar vervoer</h2>
-      <p class="text-gray-700 mb-4">
+      <h2 class="text-xl font-bold text-[var(--color-navy)] mb-4">Met het openbaar vervoer</h2>
+      <p class="text-[var(--color-navy-light)] mb-4">
         Blijham is bereikbaar met de bus. Raadpleeg 9292.nl voor actuele reisinformatie.
       </p>
       <a
         href="https://9292.nl"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 text-primary-600 hover:underline font-medium"
+        class="inline-flex items-center gap-2 text-[var(--color-blue)] hover:text-[var(--color-purple)] hover:underline font-medium transition-colors"
       >
         Plan uw reis via 9292.nl
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,23 +71,23 @@ import contact from '../data/contact.json';
       </a>
     </Card>
 
-    <Card variant="primary" class="mb-6">
-      <h2 class="text-xl font-bold text-gray-900 mb-4">Toegankelijkheid</h2>
-      <ul class="space-y-2 text-gray-700">
+    <Card variant="soft" class="mb-6">
+      <h2 class="text-xl font-bold text-[var(--color-navy)] mb-4">Toegankelijkheid</h2>
+      <ul class="space-y-2 text-[var(--color-navy-light)]">
         <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-[var(--color-purple)] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
           </svg>
           <span>De praktijk is gelijkvloers en rolstoeltoegankelijk</span>
         </li>
         <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-[var(--color-purple)] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
           </svg>
           <span>Er is een invalidentoilet aanwezig</span>
         </li>
         <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-[var(--color-purple)] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
           </svg>
           <span>Invalide parkeerplaatsen zijn beschikbaar nabij de ingang</span>
