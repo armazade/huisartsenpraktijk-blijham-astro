@@ -1,0 +1,80 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Sidebar from './Sidebar.astro';
+import SkipToContent from '../accessibility/SkipToContent.astro';
+import CookieConsent from '../CookieConsent.astro';
+import '../../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  showSidebar?: boolean;
+}
+
+const {
+  title,
+  description = 'Huisartsenpraktijk Blijham - Uw huisarts in Blijham',
+  showSidebar = true
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | Huisartsenpraktijk Blijham</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <!-- Plausible Analytics -->
+    <script defer data-domain="huisartsenpraktijkblijham.nl" src="https://plausible.io/js/script.js"></script>
+
+    <!-- Accessibility script - load early -->
+    <script is:inline>
+      // Apply saved accessibility preferences immediately to prevent flash
+      (function() {
+        const fontSize = localStorage.getItem('accessibilityFontSize');
+        const contrast = localStorage.getItem('accessibilityContrast');
+
+        if (fontSize) {
+          document.documentElement.style.setProperty('--accessibility-font-size', fontSize + '%');
+        }
+        if (contrast === 'high') {
+          document.documentElement.classList.add('high-contrast');
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <SkipToContent />
+
+    <Header />
+
+    <main id="main-content" class="flex-1">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {showSidebar ? (
+          <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+            <div class="lg:col-span-8">
+              <slot />
+            </div>
+            <aside class="lg:col-span-4 mt-8 lg:mt-0">
+              <Sidebar />
+            </aside>
+          </div>
+        ) : (
+          <slot />
+        )}
+      </div>
+    </main>
+
+    <Footer />
+
+    <CookieConsent />
+
+    <!-- Accessibility panel script -->
+    <script src="../../scripts/accessibility.ts"></script>
+  </body>
+</html>

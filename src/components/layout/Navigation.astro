@@ -1,0 +1,151 @@
+---
+import navigation from '../../data/navigation.json';
+---
+
+<nav class="bg-primary-600" aria-label="Hoofdnavigatie">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Mobile menu button -->
+    <div class="lg:hidden flex items-center justify-between py-3">
+      <span class="text-white font-medium">Menu</span>
+      <button
+        id="mobile-menu-button"
+        class="text-white p-2 rounded-lg hover:bg-primary-700"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
+      >
+        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Desktop navigation -->
+    <ul class="hidden lg:flex items-center gap-1" role="menubar">
+      {navigation.main.map((item) => (
+        <li class="relative group" role="none">
+          {item.children ? (
+            <>
+              <button
+                class="flex items-center gap-1 px-4 py-4 text-white hover:bg-primary-700 rounded-t-lg transition-colors"
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {item.label}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <ul
+                class="absolute left-0 top-full bg-white shadow-lg rounded-b-lg py-2 min-w-max opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+                role="menu"
+              >
+                {item.children.map((child) => (
+                  <li role="none">
+                    <a
+                      href={child.href}
+                      class="block px-4 py-3 text-gray-700 hover:bg-primary-50 hover:text-primary-700"
+                      role="menuitem"
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <a
+              href={item.href}
+              class="block px-4 py-4 text-white hover:bg-primary-700 rounded-lg transition-colors"
+              role="menuitem"
+            >
+              {item.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile navigation -->
+    <div
+      id="mobile-menu"
+      class="lg:hidden hidden"
+      role="menu"
+    >
+      <ul class="py-2 space-y-1">
+        {navigation.main.map((item) => (
+          <li role="none">
+            {item.children ? (
+              <div class="mobile-dropdown">
+                <button
+                  class="w-full flex items-center justify-between px-4 py-3 text-white hover:bg-primary-700 rounded-lg"
+                  aria-expanded="false"
+                >
+                  {item.label}
+                  <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <ul class="hidden ml-4 mt-1 space-y-1 bg-primary-700 rounded-lg">
+                  {item.children.map((child) => (
+                    <li role="none">
+                      <a
+                        href={child.href}
+                        class="block px-4 py-3 text-white hover:bg-primary-800 rounded-lg"
+                        role="menuitem"
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <a
+                href={item.href}
+                class="block px-4 py-3 text-white hover:bg-primary-700 rounded-lg"
+                role="menuitem"
+              >
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIconOpen = document.getElementById('menu-icon-open');
+  const menuIconClose = document.getElementById('menu-icon-close');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+
+    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+    mobileMenu?.classList.toggle('hidden');
+    menuIconOpen?.classList.toggle('hidden');
+    menuIconClose?.classList.toggle('hidden');
+  });
+
+  // Mobile dropdown toggles
+  document.querySelectorAll('.mobile-dropdown button').forEach((button) => {
+    button.addEventListener('click', () => {
+      const dropdown = button.nextElementSibling as HTMLElement;
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      const icon = button.querySelector('svg');
+
+      button.setAttribute('aria-expanded', String(!isExpanded));
+      dropdown?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+</script>

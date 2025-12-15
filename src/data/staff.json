@@ -1,0 +1,12 @@
+[
+  {"name": "M. Khodadadzade", "role": "Huisarts", "days": "Ma Wo Vr", "gender": "unknown"},
+  {"name": "V. Kalustova", "role": "Huisarts", "days": "Di Do", "gender": "unknown"},
+  {"name": "Annemarie Borgeld", "role": "Doktersassistente", "days": null, "gender": "female"},
+  {"name": "Wieka Meijer", "role": "Doktersassistente", "days": null, "gender": "female"},
+  {"name": "Diana Drenth", "role": "Doktersassistente", "days": null, "gender": "female"},
+  {"name": "Michelle Grafthuis", "role": "Doktersassistente", "days": null, "gender": "female"},
+  {"name": "Erick Hilger", "role": "POH somatiek", "days": "Ma Do", "gender": "male"},
+  {"name": "Marcel Flikkema", "role": "POH GGZ", "days": "Di", "gender": "male"},
+  {"name": "Suzanne Sterenborg", "role": "Stagiaire doktersassistente", "days": null, "gender": "female"},
+  {"name": "Ineke Wijnholds", "role": "Medewerker uitdeelpost", "days": null, "gender": "female"}
+]

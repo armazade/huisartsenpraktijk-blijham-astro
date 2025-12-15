@@ -1,0 +1,114 @@
+---
+import contact from '../../data/contact.json';
+import navigation from '../../data/navigation.json';
+---
+
+<footer class="bg-gray-800 text-white mt-auto no-print">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Contact info -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">{contact.name}</h3>
+        <address class="not-italic text-gray-300 space-y-2">
+          <p>{contact.address.street}</p>
+          <p>{contact.address.postal} {contact.address.city}</p>
+          <p class="mt-4">
+            <a
+              href={`tel:${contact.phone.replace('-', '')}`}
+              class="hover:text-white hover:underline"
+            >
+              Tel: {contact.phone}
+            </a>
+          </p>
+          <p>
+            <a
+              href={`mailto:${contact.email}`}
+              class="hover:text-white hover:underline"
+            >
+              {contact.email}
+            </a>
+          </p>
+        </address>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Snelkoppelingen</h3>
+        <ul class="space-y-2 text-gray-300">
+          <li>
+            <a href="/herhaalrecepten" class="hover:text-white hover:underline">
+              Herhaalrecepten aanvragen
+            </a>
+          </li>
+          <li>
+            <a href="/afspraak-maken" class="hover:text-white hover:underline">
+              Afspraak maken
+            </a>
+          </li>
+          <li>
+            <a href="/routebeschrijving" class="hover:text-white hover:underline">
+              Routebeschrijving
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.uwzorgonline.nl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-white hover:underline inline-flex items-center gap-1"
+            >
+              Uw Zorg Online
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Opening hours -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Openingstijden</h3>
+        <dl class="text-gray-300 space-y-2">
+          <div>
+            <dt class="font-medium text-white">Telefonisch bereikbaar</dt>
+            <dd>Ma t/m Vr: 08:00 - 17:00</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-white">Afspraken maken</dt>
+            <dd>{contact.hours.appointments}</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-white">Medicijnen ophalen</dt>
+            <dd>{contact.hours.pharmacyPickup}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-gray-700 mt-8 pt-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <p class="text-gray-400 text-sm">
+          &copy; {new Date().getFullYear()} {contact.name}. Alle rechten voorbehouden.
+        </p>
+        <nav aria-label="Footer navigatie">
+          <ul class="flex items-center gap-6 text-sm">
+            {navigation.footer.map((item) => (
+              <li>
+                <a href={item.href} class="text-gray-300 hover:text-white hover:underline">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a href="/klachtenregeling" class="text-gray-300 hover:text-white hover:underline">
+                Klachtenregeling
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>

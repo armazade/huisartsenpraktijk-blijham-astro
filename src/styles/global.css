@@ -1,1 +1,263 @@
 @import "tailwindcss";
+
+@theme {
+  /* Primary colors - Healthcare blue */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  /* Accent colors */
+  --color-accent: #059669;
+  --color-accent-light: #10b981;
+  --color-accent-dark: #047857;
+
+  /* Warning and danger */
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+
+  /* Base font size for elderly readability */
+  --font-size-base: 1.125rem;
+  --line-height-base: 1.6;
+
+  /* Font family */
+  --font-family-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Base styles for elderly readability */
+html {
+  font-size: var(--accessibility-font-size, 100%);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: #1f2937;
+  background-color: #ffffff;
+}
+
+/* High contrast mode */
+html.high-contrast {
+  --color-primary-600: #1e40af;
+  --color-primary-700: #1e3a8a;
+}
+
+html.high-contrast body {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+html.high-contrast a {
+  text-decoration: underline;
+}
+
+html.high-contrast .bg-primary-50,
+html.high-contrast .bg-primary-100 {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+}
+
+/* Focus states for accessibility - 3px outline */
+*:focus {
+  outline: 3px solid var(--color-primary-600);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--color-primary-600);
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  background-color: var(--color-primary-700);
+  color: white;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 0 0 0.5rem 0.5rem;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Minimum click target size for elderly users */
+button,
+a,
+input[type="checkbox"],
+input[type="radio"],
+select {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 24px;
+  height: 24px;
+}
+
+/* Form elements styling */
+input,
+textarea,
+select {
+  font-size: inherit;
+  padding: 0.75rem 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.375rem;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary-600);
+}
+
+/* Phone links styling */
+a[href^="tel:"] {
+  white-space: nowrap;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+  }
+}
+
+/* Responsive table wrapper */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Emergency table styling */
+.emergency-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.emergency-table th,
+.emergency-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.emergency-table th {
+  background-color: var(--color-primary-50);
+  font-weight: 600;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+/* Form step indicator */
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.step::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: #e5e7eb;
+}
+
+.step:last-child::after {
+  display: none;
+}
+
+.step.active::after,
+.step.completed::after {
+  background-color: var(--color-primary-600);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  background-color: #e5e7eb;
+  color: #6b7280;
+  z-index: 1;
+}
+
+.step.active .step-number {
+  background-color: var(--color-primary-600);
+  color: white;
+}
+
+.step.completed .step-number {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* Leaflet map container */
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+/* Cookie consent banner */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 -4px 20px rgb(0 0 0 / 0.15);
+  z-index: 9998;
+  padding: 1.5rem;
+}

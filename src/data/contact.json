@@ -1,0 +1,24 @@
+{
+  "name": "Huisartsenpraktijk Blijham",
+  "address": {
+    "street": "Raadhuisstraat 28",
+    "postal": "9697 PR",
+    "city": "Blijham"
+  },
+  "phone": "0597-561385",
+  "email": "assistenteblijham@ezorg.nl",
+  "emergency": {
+    "lifeThreatening": "112",
+    "doknoord": "088-3301330",
+    "pharmacy": "0599-792005"
+  },
+  "hours": {
+    "appointments": "08:00-10:00 en 13:00-14:00",
+    "break": "10:30-11:00 en 12:00-13:00",
+    "pharmacyPickup": "14:30-17:00"
+  },
+  "coordinates": {
+    "lat": 53.1747,
+    "lng": 7.0456
+  }
+}
