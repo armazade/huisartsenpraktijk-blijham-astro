@@ -1,0 +1,191 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+import contact from '../data/contact.json';
+---
+
+<Layout title="Privacyverklaring" description="Privacyverklaring van Huisartsenpraktijk Blijham. Hoe wij omgaan met uw persoonsgegevens.">
+  <Breadcrumbs items={[{ label: 'Privacy' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Privacyverklaring</h1>
+
+  <div class="prose prose-lg max-w-none">
+    <p class="text-lg text-gray-700 mb-6">
+      Huisartsenpraktijk Blijham hecht veel waarde aan de bescherming van uw persoonsgegevens.
+      In deze privacyverklaring willen we heldere informatie geven over hoe wij omgaan met uw
+      persoonsgegevens.
+    </p>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Welke gegevens verzamelen wij?</h2>
+      <p class="text-gray-700 mb-4">
+        Wij verwerken de volgende persoonsgegevens:
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Naam, adres, geboortedatum en geslacht</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Contactgegevens (telefoonnummer, e-mailadres)</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Burgerservicenummer (BSN)</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Verzekeringsgegevens</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Medische gegevens (bijzondere persoonsgegevens)</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Waarvoor gebruiken wij uw gegevens?</h2>
+      <p class="text-gray-700 mb-4">
+        Wij gebruiken uw persoonsgegevens voor:
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Het verlenen van huisartsenzorg</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Het bijhouden van uw medisch dossier</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Declaratie bij uw zorgverzekeraar</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Communicatie over afspraken en behandelingen</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Wettelijke verplichtingen</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card variant="primary" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Uw rechten</h2>
+      <p class="text-gray-700 mb-4">
+        Op grond van de AVG (Algemene Verordening Gegevensbescherming) heeft u de volgende rechten:
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span><strong>Recht op inzage:</strong> U kunt uw medisch dossier inzien</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span><strong>Recht op rectificatie:</strong> U kunt onjuiste gegevens laten corrigeren</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span><strong>Recht op vernietiging:</strong> U kunt vragen om vernietiging van uw dossier (met uitzonderingen)</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span><strong>Recht op overdracht:</strong> U kunt uw dossier laten overdragen naar een andere huisarts</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card class="mb-6" id="cookies">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Cookies</h2>
+      <p class="text-gray-700 mb-4">
+        Deze website maakt gebruik van cookies voor de volgende doeleinden:
+      </p>
+      <ul class="space-y-3 text-gray-700">
+        <li>
+          <strong>Functionele cookies:</strong> Deze cookies zijn noodzakelijk voor het
+          functioneren van de website. Bijvoorbeeld voor het onthouden van uw toegankelijkheidsinstellingen.
+        </li>
+        <li>
+          <strong>Analytische cookies (Plausible):</strong> Wij gebruiken Plausible Analytics
+          om anoniem te meten hoeveel bezoekers onze website heeft. Deze gegevens worden
+          niet gedeeld met derden en zijn niet herleidbaar tot u als persoon.
+        </li>
+      </ul>
+      <p class="text-gray-700 mt-4">
+        U kunt uw cookievoorkeuren op elk moment aanpassen via de cookiebanner.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Bewaartermijn</h2>
+      <p class="text-gray-700">
+        Wij bewaren uw medisch dossier gedurende 20 jaar na het einde van de behandelrelatie,
+        conform de wettelijke bewaartermijn uit de WGBO.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Beveiliging</h2>
+      <p class="text-gray-700">
+        Wij nemen passende technische en organisatorische maatregelen om uw persoonsgegevens
+        te beschermen tegen verlies of onrechtmatig gebruik. Onze medewerkers hebben een
+        geheimhoudingsplicht.
+      </p>
+    </Card>
+
+    <Card variant="accent" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Vragen of klachten?</h2>
+      <p class="text-gray-700 mb-4">
+        Heeft u vragen over deze privacyverklaring of wilt u een beroep doen op uw rechten?
+        Neem dan contact met ons op:
+      </p>
+      <address class="not-italic text-gray-700">
+        <p>{contact.name}</p>
+        <p>{contact.address.street}</p>
+        <p>{contact.address.postal} {contact.address.city}</p>
+        <p class="mt-2">
+          E-mail: <a href={`mailto:${contact.email}`} class="text-primary-600 hover:underline">{contact.email}</a>
+        </p>
+      </address>
+      <p class="text-gray-700 mt-4">
+        Bent u niet tevreden over de afhandeling? Dan kunt u een klacht indienen bij de
+        <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">
+          Autoriteit Persoonsgegevens
+        </a>.
+      </p>
+    </Card>
+  </div>
+</Layout>

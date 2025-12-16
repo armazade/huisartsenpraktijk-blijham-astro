@@ -1,0 +1,552 @@
+---
+import FormProgress from './FormProgress.astro';
+import { getUrl } from '../../utils/url';
+---
+
+<div class="w-full">
+  <FormProgress currentStep={1} totalSteps={4} />
+
+  <form id="prescription-form" class="space-y-8" novalidate>
+    <!-- Step 1: Personal Details -->
+    <div id="step-1" class="form-step">
+      <h2 class="text-2xl font-bold text-[var(--color-navy)] mb-6">Stap 1: Persoonsgegevens</h2>
+
+      <div class="space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="voorletters" class="block font-medium text-[var(--color-navy)] mb-2">
+              Voorletters
+            </label>
+            <input
+              type="text"
+              id="voorletters"
+              name="voorletters"
+              placeholder="Bijv. J.H."
+              class="form-input"
+            />
+          </div>
+
+          <div>
+            <label for="voornaam" class="block font-medium text-[var(--color-navy)] mb-2">
+              Voornaam
+            </label>
+            <input
+              type="text"
+              id="voornaam"
+              name="voornaam"
+              placeholder="Uw voornaam"
+              class="form-input"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="tussenvoegsel" class="block font-medium text-[var(--color-navy)] mb-2">
+              Tussenvoegsel
+            </label>
+            <input
+              type="text"
+              id="tussenvoegsel"
+              name="tussenvoegsel"
+              placeholder="Bijv. van, de"
+              class="form-input"
+            />
+          </div>
+
+          <div>
+            <label for="achternaam" class="block font-medium text-[var(--color-navy)] mb-2">
+              Achternaam <span class="text-[var(--color-danger)]">*</span>
+            </label>
+            <input
+              type="text"
+              id="achternaam"
+              name="achternaam"
+              required
+              placeholder="Uw achternaam"
+              class="form-input"
+            />
+            <p class="text-sm text-[var(--color-danger)] mt-1 hidden" id="achternaam-error">
+              Vul uw achternaam in
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <label for="geboorteplaats" class="block font-medium text-[var(--color-navy)] mb-2">
+            Geboorteplaats
+          </label>
+          <input
+            type="text"
+            id="geboorteplaats"
+            name="geboorteplaats"
+            placeholder="Uw geboorteplaats"
+            class="form-input"
+          />
+        </div>
+
+        <div>
+          <fieldset>
+            <legend class="block font-medium text-[var(--color-navy)] mb-2">
+              Geboortedatum <span class="text-[var(--color-danger)]">*</span>
+            </legend>
+            <div class="grid grid-cols-3 gap-3">
+              <div>
+                <label for="geboortedag" class="sr-only">Dag</label>
+                <select id="geboortedag" name="geboortedag" required class="form-input">
+                  <option value="">Dag</option>
+                  {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
+                    <option value={String(day).padStart(2, '0')}>
+                      {day}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label for="geboortemaand" class="sr-only">Maand</label>
+                <select id="geboortemaand" name="geboortemaand" required class="form-input">
+                  <option value="">Maand</option>
+                  <option value="01">Januari</option>
+                  <option value="02">Februari</option>
+                  <option value="03">Maart</option>
+                  <option value="04">April</option>
+                  <option value="05">Mei</option>
+                  <option value="06">Juni</option>
+                  <option value="07">Juli</option>
+                  <option value="08">Augustus</option>
+                  <option value="09">September</option>
+                  <option value="10">Oktober</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+              </div>
+              <div>
+                <label for="geboortejaar" class="sr-only">Jaar</label>
+                <select id="geboortejaar" name="geboortejaar" required class="form-input">
+                  <option value="">Jaar</option>
+                  {Array.from({ length: 120 }, (_, i) => new Date().getFullYear() - i).map((year) => (
+                    <option value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <p class="text-sm text-[var(--color-danger)] mt-1 hidden" id="geboortedatum-error">
+              Vul uw geboortedatum in
+            </p>
+          </fieldset>
+        </div>
+
+        <div>
+          <fieldset>
+            <legend class="block font-medium text-[var(--color-navy)] mb-2">
+              Geslacht <span class="text-[var(--color-danger)]">*</span>
+            </legend>
+            <div class="flex flex-wrap gap-4">
+              <label class="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 border-[var(--color-navy-lighter)] hover:border-[var(--color-purple)] transition-colors">
+                <input type="radio" name="geslacht" value="man" required class="w-5 h-5 accent-[var(--color-purple)]" />
+                <span class="text-[var(--color-navy)]">Man</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 border-[var(--color-navy-lighter)] hover:border-[var(--color-purple)] transition-colors">
+                <input type="radio" name="geslacht" value="vrouw" required class="w-5 h-5 accent-[var(--color-purple)]" />
+                <span class="text-[var(--color-navy)]">Vrouw</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 border-[var(--color-navy-lighter)] hover:border-[var(--color-purple)] transition-colors">
+                <input type="radio" name="geslacht" value="anders" required class="w-5 h-5 accent-[var(--color-purple)]" />
+                <span class="text-[var(--color-navy)]">Anders</span>
+              </label>
+            </div>
+            <p class="text-sm text-[var(--color-danger)] mt-1 hidden" id="geslacht-error">
+              Selecteer uw geslacht
+            </p>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Address Details -->
+    <div id="step-2" class="form-step hidden">
+      <h2 class="text-2xl font-bold text-[var(--color-navy)] mb-6">Stap 2: Adresgegevens</h2>
+
+      <div class="space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="straatnaam" class="block font-medium text-[var(--color-navy)] mb-2">
+              Straatnaam
+            </label>
+            <input
+              type="text"
+              id="straatnaam"
+              name="straatnaam"
+              placeholder="Uw straatnaam"
+              class="form-input"
+            />
+          </div>
+
+          <div>
+            <label for="huisnummer" class="block font-medium text-[var(--color-navy)] mb-2">
+              Huisnummer
+            </label>
+            <input
+              type="text"
+              id="huisnummer"
+              name="huisnummer"
+              placeholder="Bijv. 12a"
+              class="form-input"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="postcode" class="block font-medium text-[var(--color-navy)] mb-2">
+              Postcode
+            </label>
+            <input
+              type="text"
+              id="postcode"
+              name="postcode"
+              placeholder="1234 AB"
+              pattern="[0-9]{4}\s?[A-Za-z]{2}"
+              class="form-input"
+            />
+          </div>
+
+          <div>
+            <label for="woonplaats" class="block font-medium text-[var(--color-navy)] mb-2">
+              Woonplaats
+            </label>
+            <input
+              type="text"
+              id="woonplaats"
+              name="woonplaats"
+              placeholder="Uw woonplaats"
+              class="form-input"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="mobiel" class="block font-medium text-[var(--color-navy)] mb-2">
+              Mobiel nummer
+            </label>
+            <input
+              type="tel"
+              id="mobiel"
+              name="mobiel"
+              placeholder="06-12345678"
+              class="form-input"
+            />
+          </div>
+
+          <div>
+            <label for="telefoon" class="block font-medium text-[var(--color-navy)] mb-2">
+              Telefoonnummer (vast)
+            </label>
+            <input
+              type="tel"
+              id="telefoon"
+              name="telefoon"
+              placeholder="0123-456789"
+              class="form-input"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block font-medium text-[var(--color-navy)] mb-2">
+            E-mailadres <span class="text-[var(--color-danger)]">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="uw.email@voorbeeld.nl"
+            class="form-input"
+          />
+          <p class="text-sm text-[var(--color-danger)] mt-1 hidden" id="email-error">
+            Vul een geldig e-mailadres in
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Medications -->
+    <div id="step-3" class="form-step hidden">
+      <h2 class="text-2xl font-bold text-[var(--color-navy)] mb-6">Stap 3: Medicijnen</h2>
+
+      <div id="medications-container" class="space-y-6">
+        <div class="medication-item card card-soft">
+          <h3 class="font-semibold text-[var(--color-navy)] mb-4">Medicijn 1</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block font-medium text-[var(--color-navy)] mb-2">
+                Naam medicijn <span class="text-[var(--color-danger)]">*</span>
+              </label>
+              <input
+                type="text"
+                name="medicijn_naam[]"
+                required
+                placeholder="Naam van het medicijn"
+                class="form-input medication-name"
+              />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-medium text-[var(--color-navy)] mb-2">
+                  Gebruik per dag <span class="text-[var(--color-danger)]">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="medicijn_gebruik[]"
+                  required
+                  placeholder="Bijv. 2x daags"
+                  class="form-input medication-usage"
+                />
+              </div>
+              <div>
+                <label class="block font-medium text-[var(--color-navy)] mb-2">
+                  Sterkte <span class="text-[var(--color-danger)]">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="medicijn_sterkte[]"
+                  required
+                  placeholder="Bijv. 10mg"
+                  class="form-input medication-strength"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="add-medication"
+        class="mt-6 w-full flex items-center justify-center gap-2 px-4 py-4 border-2 border-dashed border-[var(--color-navy-lighter)] rounded-xl text-[var(--color-navy-light)] hover:border-[var(--color-purple)] hover:text-[var(--color-purple)] transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+        </svg>
+        Medicijn toevoegen
+      </button>
+
+      <div class="mt-8 space-y-5">
+        <div>
+          <label for="apotheek" class="block font-medium text-[var(--color-navy)] mb-2">
+            Naam apotheek <span class="text-[var(--color-danger)]">*</span>
+          </label>
+          <input
+            type="text"
+            id="apotheek"
+            name="apotheek"
+            required
+            placeholder="Naam van uw apotheek"
+            class="form-input"
+          />
+          <p class="text-sm text-[var(--color-danger)] mt-1 hidden" id="apotheek-error">
+            Vul de naam van uw apotheek in
+          </p>
+        </div>
+
+        <div>
+          <label for="opmerkingen" class="block font-medium text-[var(--color-navy)] mb-2">
+            Opmerkingen
+          </label>
+          <textarea
+            id="opmerkingen"
+            name="opmerkingen"
+            rows="4"
+            placeholder="Eventuele opmerkingen..."
+            class="form-input"
+          ></textarea>
+        </div>
+
+        <div>
+          <fieldset>
+            <legend class="block font-medium text-[var(--color-navy)] mb-2">
+              Bezorgen? <span class="text-[var(--color-danger)]">*</span>
+            </legend>
+            <div class="flex flex-wrap gap-4">
+              <label class="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 border-[var(--color-navy-lighter)] hover:border-[var(--color-purple)] transition-colors">
+                <input type="radio" name="bezorgen" value="ja" required class="w-5 h-5 accent-[var(--color-purple)]" />
+                <span class="text-[var(--color-navy)]">Ja, bezorgen</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 border-[var(--color-navy-lighter)] hover:border-[var(--color-purple)] transition-colors">
+                <input type="radio" name="bezorgen" value="nee" required class="w-5 h-5 accent-[var(--color-purple)]" />
+                <span class="text-[var(--color-navy)]">Nee, ik haal het op</span>
+              </label>
+            </div>
+            <p class="text-sm text-[var(--color-danger)] mt-1 hidden" id="bezorgen-error">
+              Geef aan of u het medicijn wilt laten bezorgen
+            </p>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Summary -->
+    <div id="step-4" class="form-step hidden">
+      <h2 class="text-2xl font-bold text-[var(--color-navy)] mb-6">Stap 4: Samenvatting</h2>
+
+      <div class="space-y-6">
+        <div class="card card-soft">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-[var(--color-navy)]">Persoonsgegevens</h3>
+            <button type="button" class="edit-step text-[var(--color-blue)] hover:text-[var(--color-purple)] font-medium transition-colors" data-step="1">
+              Wijzigen
+            </button>
+          </div>
+          <dl id="summary-personal" class="space-y-2 text-[var(--color-navy-light)]">
+            <!-- Filled by JavaScript -->
+          </dl>
+        </div>
+
+        <div class="card card-soft">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-[var(--color-navy)]">Adresgegevens</h3>
+            <button type="button" class="edit-step text-[var(--color-blue)] hover:text-[var(--color-purple)] font-medium transition-colors" data-step="2">
+              Wijzigen
+            </button>
+          </div>
+          <dl id="summary-address" class="space-y-2 text-[var(--color-navy-light)]">
+            <!-- Filled by JavaScript -->
+          </dl>
+        </div>
+
+        <div class="card card-soft">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-[var(--color-navy)]">Medicijnen</h3>
+            <button type="button" class="edit-step text-[var(--color-blue)] hover:text-[var(--color-purple)] font-medium transition-colors" data-step="3">
+              Wijzigen
+            </button>
+          </div>
+          <dl id="summary-medications" class="space-y-2 text-[var(--color-navy-light)]">
+            <!-- Filled by JavaScript -->
+          </dl>
+        </div>
+
+        <div class="space-y-4 p-6 bg-white rounded-xl border-2 border-[var(--color-navy-lighter)]">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" id="privacy-consent" required class="mt-1 w-5 h-5 accent-[var(--color-purple)]" />
+            <span class="text-[var(--color-navy)]">
+              Ik heb de <a href={getUrl('/privacy')} target="_blank" class="text-[var(--color-blue)] hover:text-[var(--color-purple)] underline">privacyverklaring</a> gelezen en ga akkoord met de verwerking van mijn gegevens.
+              <span class="text-[var(--color-danger)]">*</span>
+            </span>
+          </label>
+          <p class="text-sm text-[var(--color-danger)] hidden" id="privacy-error">
+            U moet akkoord gaan met de privacyverklaring
+          </p>
+
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" id="akkoord" required class="mt-1 w-5 h-5 accent-[var(--color-purple)]" />
+            <span class="text-[var(--color-navy)]">
+              Ik verklaar dat de ingevulde gegevens correct zijn.
+              <span class="text-[var(--color-danger)]">*</span>
+            </span>
+          </label>
+          <p class="text-sm text-[var(--color-danger)] hidden" id="akkoord-error">
+            U moet bevestigen dat de gegevens correct zijn
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success message -->
+    <div id="form-success" class="hidden text-center py-12">
+      <div class="w-20 h-20 bg-[var(--color-sage-light)] rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-10 h-10 text-[var(--color-sage)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold text-[var(--color-navy)] mb-3">Aanvraag verstuurd!</h2>
+      <p class="text-[var(--color-navy-light)] mb-8 max-w-md mx-auto">
+        Uw herhaalrecept aanvraag is succesvol verstuurd. U ontvangt een bevestiging per e-mail.
+      </p>
+      <a href={getUrl('/')} class="btn btn-primary btn-lg">
+        Terug naar home
+      </a>
+    </div>
+
+    <!-- Error message -->
+    <div id="form-error" class="hidden card bg-[var(--color-danger-light)] border-l-4 border-[var(--color-danger)] text-center">
+      <p class="text-[var(--color-danger)] font-medium">
+        Er is iets misgegaan bij het versturen. Probeer het opnieuw of neem contact met ons op.
+      </p>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div id="form-navigation" class="flex items-center justify-between pt-8 border-t border-[var(--color-navy-lighter)]">
+      <button
+        type="button"
+        id="prev-step"
+        class="hidden btn btn-outline btn-md"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Vorige
+      </button>
+
+      <button
+        type="button"
+        id="next-step"
+        class="ml-auto btn btn-primary btn-md"
+      >
+        Volgende
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+
+      <button
+        type="submit"
+        id="submit-form"
+        class="hidden ml-auto btn btn-md bg-[var(--color-sage)] text-white hover:bg-[var(--color-sage-hover)]"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        Aanvragen
+      </button>
+    </div>
+
+    <!-- Hidden field for Web3Forms -->
+    <input type="hidden" name="access_key" value="b66cdc12-96d3-4947-ae81-cec70d966856" />
+    <input type="hidden" name="subject" value="Nieuw herhaalrecept aanvraag" />
+    <input type="hidden" name="from_name" value="Huisartsenpraktijk Blijham Website" />
+  </form>
+</div>
+
+<style>
+  .form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--color-navy-lighter);
+    border-radius: 0.75rem;
+    background-color: var(--color-bg-white);
+    color: var(--color-navy);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-blue);
+    box-shadow: 0 0 0 3px var(--color-blue-light);
+  }
+
+  .form-input::placeholder {
+    color: var(--color-navy-light);
+  }
+
+  .form-input:invalid:not(:placeholder-shown) {
+    border-color: var(--color-danger);
+  }
+</style>
+
+<script src="../../scripts/prescription-form.ts"></script>

@@ -1,0 +1,265 @@
+---
+import navigation from '../../data/navigation.json';
+import SearchBar from '../ui/SearchBar.astro';
+import { getUrl } from '../../utils/url';
+
+const currentPath = Astro.url.pathname;
+const basePath = import.meta.env.BASE_URL || '/';
+
+function isActive(href: string, children?: { href: string }[]): boolean {
+  const fullHref = getUrl(href);
+  if (href === '/') {
+    return currentPath === basePath || currentPath === basePath.replace(/\/$/, '');
+  }
+  if (currentPath === fullHref || currentPath === fullHref + '/') {
+    return true;
+  }
+  if (children) {
+    return children.some(child => {
+      const childHref = getUrl(child.href);
+      return currentPath === childHref || currentPath === childHref + '/';
+    });
+  }
+  return false;
+}
+
+function isChildActive(href: string): boolean {
+  const fullHref = getUrl(href);
+  return currentPath === fullHref || currentPath === fullHref + '/';
+}
+
+type NavItem = {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+};
+---
+
+<nav class="bg-white border-b border-[var(--color-navy-lighter)] hidden md:block" aria-label="Hoofdnavigatie">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between">
+      <ul class="flex items-center gap-1" role="menubar">
+        {(navigation.main as NavItem[]).map((item) => (
+          <li class="relative group" role="none">
+            {item.children ? (
+              <>
+                <button
+                  class:list={[
+                    "nav-link gap-1.5",
+                    { "bg-[var(--color-purple-light)] text-[var(--color-purple)]": isActive(item.href, item.children) }
+                  ]}
+                  role="menuitem"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {item.label}
+                  <svg class="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <ul
+                  class="dropdown-menu absolute left-0 top-full mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+                  role="menu"
+                >
+                  {item.children.map((child) => (
+                    <li role="none">
+                      <a
+                        href={getUrl(child.href)}
+                        class:list={[
+                          "dropdown-item",
+                          { "bg-[var(--color-purple)] text-white": isChildActive(child.href) }
+                        ]}
+                        role="menuitem"
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <a
+                href={getUrl(item.href)}
+                class:list={[
+                  "nav-link",
+                  { "bg-[var(--color-purple-light)] text-[var(--color-purple)]": isActive(item.href) }
+                ]}
+                role="menuitem"
+                aria-current={isActive(item.href) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Search bar (desktop) -->
+      <div class="hidden lg:block">
+        <SearchBar />
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile navigation (slide-out) -->
+<div
+  id="mobile-nav"
+  class="fixed inset-0 z-50 hidden md:hidden"
+>
+  <!-- Backdrop -->
+  <div
+    id="mobile-nav-backdrop"
+    class="absolute inset-0 bg-black/40 backdrop-blur-sm"
+  ></div>
+
+  <!-- Slide-out menu -->
+  <div
+    id="mobile-nav-panel"
+    class="absolute top-0 left-0 w-80 max-w-[85vw] h-full bg-white shadow-2xl transform -translate-x-full transition-transform duration-300"
+  >
+    <!-- Header -->
+    <div class="flex items-center justify-between p-4 border-b border-[var(--color-navy-lighter)]">
+      <span class="font-bold text-[var(--color-navy)] text-lg">Menu</span>
+      <button
+        id="close-mobile-nav"
+        class="p-2 rounded-lg hover:bg-[var(--color-bg-soft)] transition-colors"
+        aria-label="Menu sluiten"
+      >
+        <svg class="w-6 h-6 text-[var(--color-navy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile search -->
+    <div class="p-4 border-b border-[var(--color-navy-lighter)]">
+      <SearchBar />
+    </div>
+
+    <!-- Navigation items -->
+    <div class="p-4 overflow-y-auto h-[calc(100%-160px)]">
+      <ul class="space-y-1">
+        {(navigation.main as NavItem[]).map((item) => (
+          <li>
+            {item.children ? (
+              <div class="mobile-dropdown">
+                <button
+                  class:list={[
+                    "w-full flex items-center justify-between px-4 py-3 rounded-lg text-[var(--color-navy)] hover:bg-[var(--color-bg-soft)] transition-colors font-medium",
+                    { "bg-[var(--color-purple-light)] text-[var(--color-purple)]": isActive(item.href, item.children) }
+                  ]}
+                  aria-expanded="false"
+                >
+                  {item.label}
+                  <svg class="w-5 h-5 transition-transform opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <ul class="hidden ml-4 mt-1 space-y-1">
+                  {item.children.map((child) => (
+                    <li>
+                      <a
+                        href={getUrl(child.href)}
+                        class:list={[
+                          "block px-4 py-3 rounded-lg text-[var(--color-navy-light)] hover:bg-[var(--color-bg-soft)] hover:text-[var(--color-navy)] transition-colors",
+                          { "bg-[var(--color-purple-light)] text-[var(--color-purple)] font-medium": isChildActive(child.href) }
+                        ]}
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <a
+                href={getUrl(item.href)}
+                class:list={[
+                  "block px-4 py-3 rounded-lg text-[var(--color-navy)] hover:bg-[var(--color-bg-soft)] transition-colors font-medium",
+                  { "bg-[var(--color-purple-light)] text-[var(--color-purple)]": isActive(item.href) }
+                ]}
+                aria-current={isActive(item.href) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA buttons -->
+      <div class="mt-6 pt-6 border-t border-[var(--color-navy-lighter)] space-y-3">
+        {(navigation.cta as NavItem[]).map((item, index) => (
+          <a
+            href={getUrl(item.href)}
+            class:list={[
+              "block w-full text-center py-3 px-4 rounded-2xl font-semibold transition-all",
+              index === 0
+                ? "bg-[var(--color-bg-soft)] text-[var(--color-navy)] hover:bg-[var(--color-blue-light)]"
+                : "bg-[var(--color-purple)] text-white hover:bg-[var(--color-purple-hover)]"
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mobile menu functionality
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileNavPanel = document.getElementById('mobile-nav-panel');
+  const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+  const closeMobileNav = document.getElementById('close-mobile-nav');
+
+  function openMobileNav() {
+    mobileNav?.classList.remove('hidden');
+    setTimeout(() => {
+      mobileNavPanel?.classList.remove('-translate-x-full');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNavFn() {
+    mobileNavPanel?.classList.add('-translate-x-full');
+    setTimeout(() => {
+      mobileNav?.classList.add('hidden');
+    }, 300);
+    document.body.style.overflow = '';
+  }
+
+  mobileMenuButton?.addEventListener('click', openMobileNav);
+  closeMobileNav?.addEventListener('click', closeMobileNavFn);
+  mobileNavBackdrop?.addEventListener('click', closeMobileNavFn);
+
+  // Mobile dropdown toggles
+  document.querySelectorAll('.mobile-dropdown button').forEach((button) => {
+    button.addEventListener('click', () => {
+      const dropdown = button.nextElementSibling as HTMLElement;
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      const icon = button.querySelector('svg');
+
+      button.setAttribute('aria-expanded', String(!isExpanded));
+      dropdown?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+
+  // Close on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileNav?.classList.contains('hidden')) {
+      closeMobileNavFn();
+    }
+  });
+</script>
+
+<style>
+  nav a,
+  nav button {
+    text-decoration: none !important;
+  }
+</style>

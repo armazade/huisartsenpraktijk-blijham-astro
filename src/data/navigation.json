@@ -1,0 +1,35 @@
+{
+  "main": [
+    {"label": "Home", "href": "/"},
+    {
+      "label": "Praktijkinformatie",
+      "href": "/team",
+      "children": [
+        {"label": "Medewerkers", "href": "/team"},
+        {"label": "Doktersassistente", "href": "/doktersassistente"},
+        {"label": "PraktijkOndersteuner Huisarts somatiek", "href": "/praktijkondersteuner-somatiek"},
+        {"label": "PraktijkOndersteuner Huisarts GGZ", "href": "/praktijkondersteuner-ggz"},
+        {"label": "Apotheek", "href": "/apotheek"},
+        {"label": "Afwezigheid en vakanties", "href": "/afwezigheid-en-vakanties"},
+        {"label": "Routebeschrijving", "href": "/routebeschrijving"},
+        {"label": "Klachtenregeling", "href": "/klachtenregeling"}
+      ]
+    },
+    {
+      "label": "Gezondheidsinformatie",
+      "href": "/nieuws",
+      "children": [
+        {"label": "Thuisarts nieuws", "href": "/thuisarts-nieuws"},
+        {"label": "Geneesmiddelen mee op reis", "href": "/geneesmiddelen-mee-op-reis"}
+      ]
+    }
+  ],
+  "cta": [
+    {"label": "Afspraak maken", "href": "/afspraak-maken"},
+    {"label": "Herhaalrecepten", "href": "/herhaalrecepten"}
+  ],
+  "footer": [
+    {"label": "Privacy", "href": "/privacy"},
+    {"label": "Voorwaarden", "href": "/voorwaarden"}
+  ]
+}

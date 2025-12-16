@@ -1,0 +1,72 @@
+---
+import { getUrl } from '../../utils/url';
+
+interface Props {
+  variant?: 'primary' | 'secondary' | 'blue' | 'sage' | 'outline' | 'outline-white' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  class?: string;
+  external?: boolean;
+  icon?: boolean;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  class: className = '',
+  external = false,
+  icon = false,
+} = Astro.props;
+
+// Apply base URL for internal links (not external and starts with /)
+const resolvedHref = href && !external && href.startsWith('/') ? getUrl(href) : href;
+
+const baseClasses = 'btn';
+
+const variantClasses = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  blue: 'btn-blue',
+  sage: 'bg-[var(--color-sage)] text-white hover:bg-[var(--color-sage-hover)]',
+  outline: 'btn-outline',
+  'outline-white': 'btn-outline-white',
+  danger: 'bg-[var(--color-danger)] text-white hover:bg-red-700',
+};
+
+const sizeClasses = {
+  sm: 'btn-sm',
+  md: 'btn-md',
+  lg: 'btn-lg',
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${icon ? 'gap-2' : ''} ${className}`;
+---
+
+{href ? (
+  <a
+    href={resolvedHref}
+    class={classes}
+    target={external ? '_blank' : undefined}
+    rel={external ? 'noopener noreferrer' : undefined}
+  >
+    <slot />
+    {external && (
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+      </svg>
+    )}
+  </a>
+) : (
+  <button
+    type={type}
+    class={classes}
+    disabled={disabled}
+  >
+    <slot />
+  </button>
+)}

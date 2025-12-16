@@ -1,0 +1,87 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+import contact from '../data/contact.json';
+---
+
+<Layout title="Doktersassistente" description="Informatie over de rol van de doktersassistente bij Huisartsenpraktijk Blijham.">
+  <Breadcrumbs items={[{ label: 'Praktijkinformatie', href: '/team' }, { label: 'Doktersassistente' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">De doktersassistente</h1>
+
+  <div class="prose prose-lg max-w-none">
+    <p class="text-lg text-gray-700 mb-6">
+      De doktersassistente is vaak uw eerste aanspreekpunt bij de huisartsenpraktijk.
+      Zij staan u te woord aan de telefoon en aan de balie, en ondersteunen de huisarts
+      bij het verlenen van zorg.
+    </p>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Taken van de doktersassistente</h2>
+      <ul class="space-y-2 text-gray-700">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Beantwoorden van telefoongesprekken en beoordelen van de urgentie</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Inplannen van afspraken bij de huisarts of praktijkondersteuner</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Verwerken van herhaalrecepten</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Uitvoeren van eenvoudige medische handelingen (bloeddruk meten, bloedprikken, etc.)</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Assisteren bij spreekuren en behandelingen</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Beheren van de patiëntenadministratie</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card variant="primary" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Triage</h2>
+      <p class="text-gray-700">
+        Wanneer u belt voor een afspraak, stelt de doktersassistente u enkele vragen over
+        uw klachten. Dit wordt 'triage' genoemd. Hiermee wordt bepaald hoe urgent uw vraag
+        is en bij wie u het beste terecht kunt. De assistente is hiervoor speciaal opgeleid
+        en werkt volgens protocollen die zijn opgesteld door de huisarts.
+      </p>
+      <p class="text-gray-700 mt-4">
+        Wij begrijpen dat het soms lastig kan zijn om uw klachten aan de telefoon te
+        bespreken. Weet dat de assistentes een beroepsgeheim hebben en uw informatie
+        vertrouwelijk behandelen.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Telefonisch bereikbaar</h2>
+      <p class="text-gray-700 mb-4">
+        U kunt ons bereiken op <a href={`tel:${contact.phone.replace('-', '')}`} class="text-primary-600 hover:underline font-medium">{contact.phone}</a>.
+      </p>
+      <p class="text-gray-700">
+        <strong>Afspraken maken:</strong> {contact.hours.appointments}
+      </p>
+    </Card>
+  </div>
+</Layout>

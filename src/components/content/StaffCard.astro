@@ -1,0 +1,41 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  days?: string | null;
+  gender: 'male' | 'female' | 'unknown';
+}
+
+const { name, role, days, gender } = Astro.props;
+
+const imagePath = gender === 'male'
+  ? '/images/silhouettes/male.svg'
+  : gender === 'female'
+    ? '/images/silhouettes/female.svg'
+    : '/images/silhouettes/default.svg';
+---
+
+<div class="bg-white border border-gray-200 rounded-lg p-6 text-center card-hover">
+  <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-100 overflow-hidden">
+    <img
+      src={imagePath}
+      alt={`Foto van ${name}`}
+      class="w-full h-full object-cover"
+      loading="lazy"
+    />
+  </div>
+
+  <h3 class="font-semibold text-lg text-gray-900 mb-1">
+    {name}
+  </h3>
+
+  <p class="text-primary-600 font-medium mb-2">
+    {role}
+  </p>
+
+  {days && (
+    <p class="text-sm text-gray-600">
+      <span class="font-medium">Aanwezig:</span> {days}
+    </p>
+  )}
+</div>

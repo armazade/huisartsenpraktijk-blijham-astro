@@ -1,0 +1,99 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+import NewsCard from '../components/content/NewsCard.astro';
+
+// Build-time news fetching would go here
+// For now, we'll use placeholder data
+const newsItems = [
+  {
+    title: 'Griepprik seizoen 2024-2025',
+    date: '2024-10-01',
+    description: 'Het griepseizoen nadert. Patiënten die in aanmerking komen voor de griepprik ontvangen binnenkort een uitnodiging.',
+    link: 'https://www.thuisarts.nl/griep'
+  },
+  {
+    title: 'Nieuwe openingstijden per 1 januari',
+    date: '2024-09-15',
+    description: 'Per 1 januari 2025 hanteren wij aangepaste openingstijden. Bekijk de nieuwe tijden op onze website.',
+    link: '/afspraak-maken'
+  },
+  {
+    title: 'Vaccinaties op afspraak',
+    date: '2024-08-20',
+    description: 'Alle vaccinaties worden voortaan alleen op afspraak gegeven. Neem contact op met de praktijk om een afspraak te maken.',
+    link: '/afspraak-maken'
+  },
+];
+---
+
+<Layout title="Nieuws" description="Nieuws en actualiteiten van Huisartsenpraktijk Blijham.">
+  <Breadcrumbs items={[{ label: 'Gezondheidsinformatie', href: '/nieuws' }, { label: 'Nieuws' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Nieuws</h1>
+
+  <p class="text-lg text-gray-700 mb-8">
+    Blijf op de hoogte van het laatste nieuws van onze praktijk en relevante
+    gezondheidsinformatie.
+  </p>
+
+  <div class="space-y-6 mb-8">
+    {newsItems.map((item) => (
+      <NewsCard
+        title={item.title}
+        date={item.date}
+        description={item.description}
+        link={item.link}
+      />
+    ))}
+  </div>
+
+  <Card variant="primary" class="mb-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Meer gezondheidsinformatie</h2>
+    <p class="text-gray-700 mb-4">
+      Op zoek naar betrouwbare gezondheidsinformatie? Bekijk de volgende websites:
+    </p>
+    <ul class="space-y-3">
+      <li>
+        <a
+          href="https://www.thuisarts.nl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-primary-600 hover:underline font-medium"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+          Thuisarts.nl - Betrouwbare informatie van huisartsen
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.apotheek.nl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-primary-600 hover:underline font-medium"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+          Apotheek.nl - Informatie over medicijnen
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.rivm.nl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-primary-600 hover:underline font-medium"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+          RIVM - Rijksinstituut voor Volksgezondheid en Milieu
+        </a>
+      </li>
+    </ul>
+  </Card>
+</Layout>

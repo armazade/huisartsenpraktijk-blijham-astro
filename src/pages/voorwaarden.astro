@@ -1,0 +1,145 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Card from '../components/ui/Card.astro';
+import contact from '../data/contact.json';
+import { getUrl } from '../utils/url';
+---
+
+<Layout title="Algemene voorwaarden" description="Algemene voorwaarden van Huisartsenpraktijk Blijham.">
+  <Breadcrumbs items={[{ label: 'Voorwaarden' }]} />
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">Algemene voorwaarden</h1>
+
+  <div class="prose prose-lg max-w-none">
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 1 - Inschrijving</h2>
+      <p class="text-gray-700 mb-4">
+        Om zorg te kunnen ontvangen bij Huisartsenpraktijk Blijham dient u zich in te schrijven.
+        Bij inschrijving wordt u gevraagd om:
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Een geldig identiteitsbewijs</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Uw zorgverzekeringspas</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Gegevens van uw vorige huisarts (indien van toepassing)</span>
+        </li>
+      </ul>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 2 - Afspraken</h2>
+      <p class="text-gray-700 mb-4">
+        Voor een consult bij de huisarts dient u een afspraak te maken. Wij vragen u om:
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li>Tijdig te komen (5 minuten voor de afspraak)</li>
+        <li>Bij verhindering de afspraak minimaal 24 uur van tevoren af te zeggen</li>
+        <li>Bij het maken van de afspraak kort aan te geven waarvoor u komt</li>
+      </ul>
+      <p class="text-gray-700 mt-4">
+        Bij herhaald niet nakomen van afspraken zonder afzegging kunnen wij besluiten om
+        u uit te schrijven.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 3 - Telefonische bereikbaarheid</h2>
+      <p class="text-gray-700 mb-4">
+        De praktijk is telefonisch bereikbaar op werkdagen van 08:00 tot 17:00 uur.
+        Tijdens de pauzetijden ({contact.hours.break}) zijn wij niet bereikbaar.
+      </p>
+      <p class="text-gray-700">
+        Buiten kantoortijden kunt u terecht bij Huisartsenpost DokNoord: {contact.emergency.doknoord}.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 4 - Medicijnen</h2>
+      <p class="text-gray-700 mb-4">
+        Herhaalrecepten kunt u aanvragen via:
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li>Deze website</li>
+        <li>Telefonisch (kies optie 3)</li>
+        <li>Via de Service Apotheek App</li>
+        <li>Via de apotheek</li>
+      </ul>
+      <p class="text-gray-700 mt-4">
+        Vraag uw herhaalrecept minimaal 3 werkdagen van tevoren aan.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 5 - Kosten</h2>
+      <p class="text-gray-700 mb-4">
+        Huisartsenzorg wordt vergoed vanuit de basisverzekering. Sommige verrichtingen
+        kunnen buiten de verzekering vallen, zoals:
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li>Keuringen (rijbewijs, sport, etc.)</li>
+        <li>Medische verklaringen</li>
+        <li>Niet-medisch geïndiceerde behandelingen</li>
+      </ul>
+      <p class="text-gray-700 mt-4">
+        Voor deze verrichtingen brengen wij kosten in rekening volgens de geldende tarieven.
+        U wordt hierover vooraf geïnformeerd.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 6 - Omgangsvormen</h2>
+      <p class="text-gray-700 mb-4">
+        Wij verwachten van onze patiënten dat zij respectvol omgaan met onze medewerkers.
+        Agressie, bedreiging of discriminatie wordt niet getolereerd en kan leiden tot
+        onmiddellijke uitschrijving.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 7 - Privacy</h2>
+      <p class="text-gray-700">
+        Wij gaan zorgvuldig om met uw persoonsgegevens. Zie onze
+        <a href={getUrl('/privacy')} class="text-primary-600 hover:underline">privacyverklaring</a>
+        voor meer informatie.
+      </p>
+    </Card>
+
+    <Card class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Artikel 8 - Klachten</h2>
+      <p class="text-gray-700">
+        Bent u niet tevreden? Lees onze
+        <a href={getUrl('/klachtenregeling')} class="text-primary-600 hover:underline">klachtenregeling</a>
+        voor meer informatie over hoe u een klacht kunt indienen.
+      </p>
+    </Card>
+
+    <Card variant="primary" class="mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Contact</h2>
+      <address class="not-italic text-gray-700">
+        <p class="font-semibold">{contact.name}</p>
+        <p>{contact.address.street}</p>
+        <p>{contact.address.postal} {contact.address.city}</p>
+        <p class="mt-2">
+          Telefoon: <a href={`tel:${contact.phone.replace('-', '')}`} class="text-primary-600 hover:underline">{contact.phone}</a>
+        </p>
+        <p>
+          E-mail: <a href={`mailto:${contact.email}`} class="text-primary-600 hover:underline">{contact.email}</a>
+        </p>
+      </address>
+    </Card>
+  </div>
+</Layout>
